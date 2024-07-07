@@ -1,3 +1,128 @@
+html,
 body {
-  background-color: blueviolet;
+  height: 100%;
+  
+}
+
+body {
+  background-color: #fbebca;
+  font-family: Arial, Helvetica, serif;
+}
+
+.input-bar {
+  border-radius: 5px;
+  border: none;
+  width: 175px;
+  border: 1px solid black;
+}
+
+.search-button {
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+
+
+.logo-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+h1 {
+  margin-bottom: 0%;
+}
+
+.nav-list ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+.nav-list li {
+  flex: 1;
+  text-align: center;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* ul {
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+} */
+
+header {
+  padding: 40px;
+  color: #090808;
+  display: flex;
+  border: 1px solid black;
+  height: 2px;
+  background-color: rgb(255, 222, 160);
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+/* nav {
+  display: flex;
+  align-items: flex-end;
+} */
+
+
+.quick-search {
+  display: flex;
+  justify-content: center;
+  border: 3px solid;
+  margin: 80px;
+  padding: 150px 75px 150px 75px;
+  /* background-image: linear-gradient((rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(flavor-haven-header-background.png)); */
+  /* background-image: url('flavor-haven-header-background.png');
+  background-size: cover;
+  position: relative; */
+} 
+
+.best-selection-inner {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.best-selection h2 {
+  text-align: center;
+}
+
+.food-blog {
+  margin-top: 50px;
+  border-bottom: 3px solid;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.food-blog h3 {
+  text-align: center;
+}
+
+.food-blog-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-icon ul li {
+  display: flex;
+  list-style-type: none;
+  margin-left: 575px;
+  padding: 0;
+  justify-content: space-around;
+  align-items: flex-start;
 }
