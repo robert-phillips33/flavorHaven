@@ -5,10 +5,6 @@ import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice }
 import recipeData from '../src/data/recipes.js';
 import ingredientsData from '../src/data/ingredients.js';
 
-// const { findRecipeIngredients, findRecipeTag, findRecipeName } = require('../src/recipes');
-// const recipeData = require('../src/data/recipes');
-
-
 describe('findRecipeIngredients', () => {
   it('Should be a function', () => {
     expect(findRecipeIngredients).to.be.a('function');

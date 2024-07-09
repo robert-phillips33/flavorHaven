@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Starter kit for Turing FE2 paired project",
   "main": "index.js",
-  "type": "module",
+  
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
