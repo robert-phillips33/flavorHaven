@@ -1,7 +1,7 @@
 //Here is an example demonstrating logic separated that can be imported into the scripts and test files. Feel free to update this later! 
 
 import ingredientsData from './data/ingredients.js';
-// import recipeData from './data/recipes.js';
+import recipeData from './data/recipes.js';
 
 export const findRecipeIngredients = recipe => {
   var ingredientList = [];
@@ -12,6 +12,7 @@ export const findRecipeIngredients = recipe => {
   return ingredientList;
 }
 
+
 // Return a filtered list of recipes based on a tag. (Extension option: filtering by multiple tags)
 export const findRecipeTag = (recipeList, tag) => {
 
@@ -19,11 +20,16 @@ export const findRecipeTag = (recipeList, tag) => {
     return recipes.tags.includes(tag)
   });
   let mapRecipe = thatRecipe.map((food) => {
-    return { id: food.name, tags: food.tags }
+    // return { id: food.name, tags: food.tags }
+    return food.name
     // return food.name
   });
+  // console.log('><><>>>', mapRecipe)
   return mapRecipe
+  // console.log(mapRecipe)
 };
+
+
 
 // console.log(findRecipeTag(recipeData, 'sauce'))
 
@@ -43,7 +49,7 @@ export const findRecipeName = (recipe, name) => {
 
 
 // Get ingredients prices
-
+//Calculate the cost of a given recipe’s ingredients
 export const findRecipePrice = (recipe) => {
   
   var pricePerIngredient = [];
@@ -57,3 +63,20 @@ export const findRecipePrice = (recipe) => {
   return totalValue;
   
 }
+
+// findRecipePrice(recipeData[0])
+// console.log(findRecipePrice('Loaded Chocolate Chip Pudding Cookie Cups'))
+// console.log(("Ingredient Amount path:", recipeData[0].ingredients[0].quantity.amount)) // <<<< keeep for ref.
+
+// quantity.amount * cost per unit (??)
+
+// console.log(findRecipePrice('Loaded Chocolate Chip Pudding Cookie Cups'))
+//Return the directions / instructions for a given recipe
+
+export const findRecipeInstructions = (recipe, recipeName) => {
+  let userRecipe = recipe.find((recipes) => {
+    return recipes.name === recipeName
+  })
+  return userRecipe.instructions
+};
+
