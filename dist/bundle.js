@@ -1770,15 +1770,18 @@ const ingredientsData = [
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   findRecipeIngredients: () => (/* binding */ findRecipeIngredients),
+
 /* harmony export */   findRecipeName: () => (/* binding */ findRecipeName),
 /* harmony export */   findRecipePrice: () => (/* binding */ findRecipePrice),
 /* harmony export */   findRecipeTag: () => (/* binding */ findRecipeTag)
 /* harmony export */ });
 /* harmony import */ var _data_ingredients_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
+
 //Here is an example demonstrating logic separated that can be imported into the scripts and test files. Feel free to update this later! 
 
 
 // import recipeData from './data/recipes.js';
+
 
 const findRecipeIngredients = recipe => {
   var ingredientList = [];
@@ -1788,6 +1791,7 @@ const findRecipeIngredients = recipe => {
   }
   return ingredientList;
 }
+
 
 // Return a filtered list of recipes based on a tag. (Extension option: filtering by multiple tags)
 const findRecipeTag = (recipeList, tag) => {
@@ -1801,6 +1805,7 @@ const findRecipeTag = (recipeList, tag) => {
   });
   return mapRecipe
 };
+
 
 // console.log(findRecipeTag(recipeData, 'sauce'))
 
@@ -1821,19 +1826,23 @@ const findRecipeName = (recipe, name) => {
 
 // Get ingredients prices
 
+
 const findRecipePrice = (recipe) => {
   
   var pricePerIngredient = [];
   for (var i=0; i < recipe.ingredients.length; i++){
+
     var currentIngredient = _data_ingredients_js__WEBPACK_IMPORTED_MODULE_0__["default"].find((ingredient) => ingredient.id === recipe.ingredients[i].id);
     var priceForThisIngredient = (currentIngredient.estimatedCostInCents * recipe.ingredients[i].quantity.amount)
     pricePerIngredient.push(priceForThisIngredient);
   }
+
   var initVal = 0;
   var totalValue = pricePerIngredient.reduce((accumulatorVal,currentVal)=> accumulatorVal + currentVal, initVal,);
   return totalValue;
   
 }
+
 
 /***/ }),
 /* 12 */
@@ -1842,6 +1851,7 @@ const findRecipePrice = (recipe) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+
 /* harmony export */   displayRecipes: () => (/* binding */ displayRecipes)
 /* harmony export */ });
 //NOTE: Your DOM manipulation will occur in this file
@@ -1939,7 +1949,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _images_turing_logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
 /* harmony import */ var _data_ingredients__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
 /* harmony import */ var _recipes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11);
+
 /* harmony import */ var _domUpdates__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(12);
+
 //NOTE: Data model and non-dom manipulating logic will live in this file.
 
 

@@ -14,16 +14,28 @@ export const findRecipeIngredients = recipeName => {
 }
 
 
+
+
+
 export const findRecipeTag = (recipeList, tag) => {
 
   let thatRecipe = recipeList.filter((recipes) => {
     return recipes.tags.includes(tag)
   });
   let mapRecipe = thatRecipe.map((food) => {
-    return { id: food.name, tags: food.tags }
+
+   
+
+    // return { id: food.name, tags: food.tags }
+    return food.name
+    // return food.name
+
   });
+  // console.log('><><>>>', mapRecipe)
   return mapRecipe
+  // console.log(mapRecipe)
 };
+
 
 
 export const findRecipeName = (recipe, name) => {
@@ -48,11 +60,29 @@ export const findRecipePrice = (recipe) => {
   var totalValue = pricePerIngredient.reduce((accumulatorVal, currentVal) => accumulatorVal + currentVal, initVal,);
   return totalValue;
 
+
 }
+
+
+  
+
+
+// findRecipePrice(recipeData[0])
+// console.log(findRecipePrice('Loaded Chocolate Chip Pudding Cookie Cups'))
+// console.log(("Ingredient Amount path:", recipeData[0].ingredients[0].quantity.amount)) // <<<< keeep for ref.
+
+// quantity.amount * cost per unit (??)
+
+// console.log(findRecipePrice('Loaded Chocolate Chip Pudding Cookie Cups'))
+//Return the directions / instructions for a given recipe
+
 
 export const findRecipeInstructions = (recipe, recipeName) => {
   let userRecipe = recipe.find((recipes) => {
     return recipes.name === recipeName
   })
   return userRecipe.instructions
+
 };
+
+

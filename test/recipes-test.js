@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 // const chai = require('chai');
 // const expect = chai.expect;
-import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
-import recipeData from '../src/data/recipes.js';
+import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, findRecipeInstructions } from '../src/recipes.js';
+import recipeData from '../src/data/recipes.js'; 
 import ingredientsData from '../src/data/ingredients.js';
 
 describe('findRecipeIngredients', () => {
@@ -24,13 +24,13 @@ describe('findRecipeIngredients', () => {
 })
 
 describe('findRecipeTag', () => {
-  it.skip('Should be a function', () => {
+  it('Should be a function', () => {
     expect(findRecipeTag).to.be.a('function');
   });
 
   it('Should return a filtered list of recipes based on a tag', () => {
     const recipeTag = findRecipeTag(recipeData, 'sauce')
-    expect(recipeTag).to.deep.equal('Dirty Steve\'s Original Wing Sauce')
+    expect(recipeTag[0]).to.deep.equal('Dirty Steve\'s Original Wing Sauce')
   });
 });
 const allRecipeTag = recipeData.map((recipe) => {
@@ -84,4 +84,10 @@ describe('findRecipeInstructions', function() {
       }
     ])
   });
+
 });
+
+
+
+// console.log(findRecipeInstructions(recipeData, 'Pastry Cream'))
+
