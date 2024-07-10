@@ -33,7 +33,10 @@ describe('findRecipeTag', () => {
     expect(recipeTag).to.deep.equal('Dirty Steve\'s Original Wing Sauce')
   });
 });
-
+const allRecipeTag = recipeData.map((recipe) => {
+  return recipe.tags
+})
+console.log(allRecipeTag)
 describe('findRecipeName', () => {
   it('Should be a function', () => {
     expect(findRecipeName).to.be.a('function');
@@ -52,5 +55,33 @@ describe('findRecipePrice', () => {
   it('should have the right price total', () => {
     const price = findRecipePrice(recipeData[5])
     expect(price).to.equal(18880.25);
+  });
+});
+
+describe('findRecipeInstructions', function() {
+  it('should be a function', function() {
+    expect(findRecipeInstructions).to.be.a('function');
+  });
+
+  it('should return the instructions for a given recipe', function() {
+    const userRecipe = findRecipeInstructions(recipeData, 'Pastry Cream')
+    expect(userRecipe).to.deep.equal([
+      {
+        instruction: 'In a heavy saucepan, stir together the milk and 1/4 cup of sugar. Bring to a boil over medium heat.',
+        number: 1
+      },
+      {
+        instruction: "In a medium bowl, whisk together the egg yolks and egg. Stir together the remaining sugar and cornstarch; then stir them into the egg until smooth. When the milk comes to a boil, drizzle it into the bowl in a thin stream while mixing so that you do not cook the eggs. Return the mixture to the saucepan, and slowly bring to a boil, stirring constantly so the eggs don' t curdle or scorch on the bottom.",
+        number: 2
+      },
+      {
+        instruction: 'When the mixture comes to a boil and thickens, remove from the heat. Stir in the butter and vanilla, mixing until the butter is completely blended in.',
+        number: 3
+      },
+      {
+        instruction: 'Pour into a heat-proof container and place a piece of plastic wrap directly on the surface to prevent a skin from forming. Refrigerate until chilled before using.',
+        number: 4
+      }
+    ])
   });
 });
