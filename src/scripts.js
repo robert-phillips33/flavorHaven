@@ -9,7 +9,7 @@ import recipeData from './data/recipes'
 import ingredientsData from './data/ingredients'
 // Below are examples of how you can import functions from either the recipes or domUpdates files.
 import { findRecipeIngredients } from './recipes';
-import { displayRecipes } from './domUpdates'
+import { displayRecipes, userInput } from './domUpdates'
 
 console.log(ingredientsData)
 findRecipeIngredients("Dirty Steve's Original Wing Sauce")

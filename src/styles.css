@@ -240,9 +240,9 @@ li {
 /* .all-recipes-button ul li {
   list-style-type: none;
   align-items: center;
-} */
+} 
 
-/* .food-name {
+.food-name {
   display: flex;
   flex-direction: row;
 } */
@@ -269,7 +269,7 @@ li {
   background-color: #f9f9f9; */
 }
 
-.food-name {
+/* .food-name {
   grid-area: name;
   text-align: center;
 }
@@ -284,6 +284,6 @@ li {
 
 .food-tags {
   grid-area: tags;
-}
+} */
 
 
