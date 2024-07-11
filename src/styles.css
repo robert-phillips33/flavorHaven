@@ -36,6 +36,12 @@ header {
   
 }
 
+.headerImg,
+.headerImgTwo {
+  width: 35px;
+  height: 35px;
+}
+
 h1 {
   margin-bottom: 0%;
 }
@@ -60,10 +66,10 @@ h1 {
 .aboutUs-btn {
   background-color: rgb(255, 222, 160);
   color: black;
-  padding: 16px;
   font-size: 20px;
   border: none;
-  width: 50px;
+  padding: 0;
+  width: 100px;
   margin-top: 20px;
   cursor: pointer;
 }
@@ -101,6 +107,11 @@ h1 {
   width: 200px;
   margin-top: 20px;
   cursor: pointer;
+  margin-left: 50px;
+}
+
+.user-recipes-button {
+  margin-left: 100px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -122,8 +133,6 @@ h1 {
   display: table-row;
 }
 
-
-
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd;}
 
@@ -143,6 +152,7 @@ h1 {
   background-image: url('./images/flavor-haven-header-background-new.png');
   background-size: cover;
   position: relative;
+  border-radius: 10px;
 }
 
 .input-bar {
@@ -163,8 +173,12 @@ h1 {
 opacity: 0;}
 
 .search-button {
-  border-radius: 5px;
-  border: 1px solid black;
+  border-radius: 10px;
+  width: 90px;
+}
+
+.search-button:hover {
+  cursor: pointer;
 }
 
 .recipe-list-display {
@@ -188,14 +202,65 @@ opacity: 0;}
   flex-direction: row;
 }
 
-.best-selection img {
-  height: 200px;
-  width: 200px;
+.container-best-select-imgs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.best-select-actual-img {
+  object-fit: contain;
+  width: 80%;
+  height: 80%;
+}
+
+/*
+*************************************************
+*>>>>>>>>> 3RD MID PAGE / ALL RECIPIES <<<<<<<<<*
+*************************************************
+*/
+
+.food-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.food-image {
+  object-fit: contain;
+  height: 40%;
+  width: 80%;
+}
+
+.food-name {
+  font-size: 110%;
+}
+
+.click-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-food {
+  display: grid;
+  grid-template-areas: 
+      "name name"
+      "ingredients instructions"
+      "tags instructions";
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  /* padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9; */
 }
 
 /*
 ***********************************************
-*>>>>>>>>> 3RD MID PAGE / FOOD BLOGS <<<<<<<<<*
+*>>>>>>>>> 4TH MID PAGE / FOOD BLOGS <<<<<<<<<*
 ***********************************************
 */
 
@@ -261,34 +326,13 @@ li {
 /* .all-recipes-button ul li {
   list-style-type: none;
   align-items: center;
-} 
+}  */
 
-.food-name {
-  display: flex;
-  flex-direction: row;
-} */
 
-/* .food-image {
-  height: 250px;
-  width: 200px;
-} */
 
 /* THE ITEMS BELOW ARE NOT USED YET (AS FAR AS I CAN TELL) */
 
-.single-food {
-  display: grid;
-  grid-template-areas: 
-      "name name"
-      "ingredients instructions"
-      "tags instructions";
-  gap: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-  /* padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9; */
-}
+
 
 /* .food-name {
   grid-area: name;
@@ -307,8 +351,3 @@ li {
   grid-area: tags;
 } */
 
-.headerImg,
-.headerImgTwo {
-  width: 35px;
-  height: 35px;
-}

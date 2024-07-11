@@ -10,6 +10,8 @@ const recipeDisplaySection = document.querySelector('.recipe-list-display');
 const searchRecipes = document.querySelector('.input-bar')
 const searchRecipesBtn = document.querySelector('.search-button')
 const homeViewBtn = document.querySelector('.home-btn')
+const homeView = document.querySelector('#home-page')
+const savedRecipes = document.querySelector('.user-recipes-button')
 
 const userSearchDisplay = document.querySelector('.best-selection')
 const breakfastTag = document.querySelector('.breakfast')
@@ -20,6 +22,7 @@ const dinnerTag = document.querySelector('.dinner')
 const brunchTag = document.querySelector('.brunch')
 const saladTag = document.querySelector('.salad')
 const snackTag = document.querySelector('.snack')
+let recipesToCook = [];
 
 var currentRecipeSelection = recipeData;
 
@@ -39,7 +42,8 @@ const displayRecipes = () => {
 
     recipeDisplaySection.innerHTML += `
     <article class="single-food">
-      <section id='ID${currentRecipeSelection[i].id}'>
+      <h3 class="click-save-text">DOUBLE CLICK IMAGE TO SAVE</h3>
+      <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
         <div class="food-name">
             <img class='food-image' id = 'foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}'>
             <h2 class='food-name hidden' id = 'foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
@@ -156,13 +160,151 @@ tagInitialize();
 
 //HOME button
 const homePageView = () => {
+  homeView.innerHTML = `
+  <body id="home-page">
+    <header>
+      <div class="logo-container">
+        <h1>Flavor Haven</h1>
+      </div>
+      <nav class="nav-list">
+        <ul>
+          <li><button class="home-btn">Home</button></li>
+          <li><button class="aboutUs-btn">About Us</button></li>
+        </ul>
+      </nav>
+    </header>
+  <div class="dropdown">
+    <button class="all-recipes-button">Recipes</button>
+    <div class="dropdown-content">
+      <table>
+        <tr>
+          <th>Meals</th>
+          <th>Sides</th>
+          <th><a href="#" class="allRecipes">All</a></th>
+        </tr>
+        <tr>
+          <td><a href="#" class="breakfast">Breakfast</a></td>
+          <td><a href="#" class="side-dish">Side Dish</a></td>
+        </tr>
+        <tr>
+          <td><a href="#" class="lunch">Lunch</a></td>
+          <td><a href="#" class="appetizer">Appetizer</a></td>
+        </tr>
+        <tr>
+          <td><a href="#" class="dinner">Dinner</a></td>
+          <td><a href="#" class="salad">Salad</a></td>
+        </tr>
+        <tr>
+          <td><a href="#" class="brunch">Brunch</a></td>
+          <td><a href="#" class="snack">Snack</a></td>
+        </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <button class="user-recipes-button">
+    Saved Recipes
+  </button>
 
+  <section class="quick-search">
+    <div class="container">
+      <input class="input-bar" id="searchInput" type="text" placeholder="search for recipes here!">
+      <button class="search-button">Search</button>
+    </div>
+  </section>
+  <!-- TEST BELOW -->
+  <section class="saved-recipes">
+
+  </section>
+
+  <!-- TEST ABOVE -->
+  <section class="recipe-list-display"></section>
+
+  <section class="best-selection">
+    <h2>Best Selection</h2>
+    <div class="best-selection-inner">
+      <div class="container-best-select-imgs">
+        <img class="best-select-actual-img" src="https://spoonacular.com/recipeImages/595736-556x370.jpg" alt="">
+        <h3>Loaded Chocolate Chip Pudding Cookie Cups</h3>
+        <p>Food Detail</p>
+      </div>
+      <div class="container-best-select-imgs">
+        <img class="best-select-actual-img" src="https://spoonacular.com/recipeImages/678353-556x370.jpg" alt="">
+        <h3>Maple Dijon Apple Cider Grilled Pork Chops</h3>
+        <p>Food Detail</p>
+      </div>
+      <div class="container-best-select-imgs">
+        <img class="best-select-actual-img" src="https://spoonacular.com/recipeImages/412309-556x370.jpeg" alt="">
+        <h3>Dirty Steve's Original Wing Sauce</h3>
+        <p>Food Detail</p>
+      </div>
+      <div class="container-best-select-imgs">
+        <img class="best-select-actual-img" src="https://spoonacular.com/recipeImages/741603-556x370.jpeg" alt="">
+        <h3>Elvis Pancakes</h3>
+        <p>Food Detail</p>
+      </div>
+    </div>
+  </section>
+  <section class="food-blog">
+    <h3>Food Blog</h3>
+    <div class="food-blog-container">
+      <div class="food-blog-text">
+        <h1>Food img</h1>
+        <p>These chicken skewers are a family favorite! Very easy, deliciously smoky, nice and sweet,
+          with a good amount of spice and bite. Air fryer, grill, and oven-friendly!</p>
+      </div>
+      <img src="" alt="">
+    </div>
+    <div class="food-blog-container">
+      <div class="food-blog-text">
+        <img src="" alt="">
+      </div>
+      <h1>Food img</h1>
+      <p>This Chicken Salad is so good! Protein-packed with a delicious creamy dressing,
+        and perfect for an on-the-go lunch in a sandwich or wrap.
+      </p>
+    </div>
+    <div class="food-blog-container">
+      <div class="food-blog-text">
+        <h1>Food img</h1>
+        <p>This green rice is my FAVORITE! It’s packed with spinach and cilantro,
+          perfectly spicy, nutritious, and goes with just about everything.
+        </p>
+      </div>
+      <img src="" alt="">
+    </div>
+  </section>
+  <section class="footer">
+    <div class="social-icon">
+      <ul>
+        <li><img src="" class="icon" />Facebook</li>
+        <li><img src="" class="icon" />Twitter</li>
+        <li><img src="" class="icon" />Instagram</li>
+      </ul>
+    </div>
+  </section>
+
+</body>`
 }
 homeViewBtn.addEventListener('click', homePageView)
 
+//SAVE RECIPES
+const savedRecipesPage = () => {
+  let savedRecipesView = document.querySelector('.saved-recipes')
+  savedRecipesView.innerHTML = ``
+}
 
+savedRecipes.addEventListener('click', savedRecipesPage)
+
+const addToSavedRecipe = (recipe) => {
+  if (!recipesToCook.includes(recipe)) {
+    recipesToCook.push(recipe)
+  }
+}
 export {
   displayRecipes,
   userInput,
+  savedRecipesPage,
+  addToSavedRecipe
   // changePageToHome
 }
