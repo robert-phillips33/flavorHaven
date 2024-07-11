@@ -185,6 +185,10 @@ opacity: 0;}
   display: flex;
   flex-direction: column;
 }
+.saved-recipes{
+  background-color:aquamarine;
+
+}
 
 /*
 ****************************************************
