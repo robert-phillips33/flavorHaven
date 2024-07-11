@@ -65,7 +65,7 @@ const displayRecipes = () => {
 
     recipeDisplaySection.innerHTML += `
     <article class="single-food">
-      <h3 class="click-save-text">DOUBLE CLICK IMAGE TO SAVE</h3>
+      <h3 class="click-save-text">DOUBLE CLICK IMAGE FOR DETAILS</h3>
       <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
         <div class="food-name">
             <img class='food-image' id = 'foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}'>
@@ -269,6 +269,12 @@ const addToSavedRecipe = (recipe) => {
     recipesToCook.push(recipe)
   }
 }
+
+//To display a dollar
+// const centsToDollarAmount = () => {
+//   return cents / 100
+// }
+
 export {
   displayRecipes,
   userInput,
