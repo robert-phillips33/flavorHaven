@@ -6,7 +6,8 @@ const ingredientsPromise =fetch("https://what-s-cookin-starter-kit.herokuapp.com
 const recipesPromise =fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/recipes").then((response)=> response.json());
 
 let userList;
-
+let ingredientList;
+let recipeData;
 
 const randomUser = (response) => {
     userList = response[0];
@@ -16,12 +17,27 @@ const randomUser = (response) => {
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 }
+const handleIngredients = (response)=>{
+    ingredientList = response[0].ingredients;
+    // console.log(ingredientList)
+  
+  }
+  const handleRecipes = (response)=>{
+    recipeData = response[0].recipes;
+    // console.log(recipeData)
+  
+  }
+  
 
 
 export {
     userPromise,
     ingredientsPromise,
+    handleIngredients,
+    handleRecipes,
     recipesPromise,
+    recipeData,
     randomUser,
     currentUser,
+    ingredientList,
 }

@@ -1,9 +1,9 @@
 
-import ingredientsData from './data/ingredients.js';
-// import recipeData from './data/recipes.js';
-// import usersData from './data/users.js';
+// import ingredientsData from './data/ingredients.js';
+// // import recipeData from './data/recipes.js';
+// // import usersData from './data/users.js';
 import { userPromise, currentUser, randomUser, recipesPromise, ingredientsPromise } from './apiCalls.js';
-import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
+import { findRecipeIngredients, recipeData, ingredientList, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
 
 // const allRecipesButton = document.querySelector('.all-recipes-button');
@@ -35,8 +35,8 @@ const snackTag = document.querySelector('.snack')
 let recipesToCook = [];
 
 let userList = [];
-
-let recipeData = [];
+// let ingredientList = [];
+// let recipeData = [];
 
 var currentRecipeSelection = recipeData;
 Promise.all([userPromise]).then((values) => {randomUser(values)});
@@ -56,6 +56,8 @@ const getRandomIndex = (array) => {
 
 
 Promise.all([userPromise]).then((values) => {handleData(values)});
+// Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
+// Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
 
 
 const handleData = (response) => {
@@ -63,11 +65,16 @@ const handleData = (response) => {
     console.log(currentUser)
 logIn.innerHTML = currentUser.name;
 }
-const handleIngredients = (response)=>{
-    recipeList = response[0];
-    console.log(recipeList)
+// const handleIngredients = (response)=>{
+//   ingredientList = response[0];
+//   console.log(ingredientList)
 
-}
+// }
+// const handleRecipes = (response)=>{
+//   recipeData = response[0];
+//   console.log(recipeData)
+
+// }
 
 
 

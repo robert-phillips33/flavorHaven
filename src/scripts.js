@@ -24,5 +24,5 @@ import { findRecipeIngredients } from './recipes';
 import { displayRecipes, userInput, displayResults } from './domUpdates'
 
 // console.log(ingredientsData)
-findRecipeIngredients("Dirty Steve's Original Wing Sauce")
+// findRecipeIngredients("Dirty Steve's Original Wing Sauce")
 // displayRecipes();
