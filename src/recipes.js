@@ -1,20 +1,29 @@
 //Here is an example demonstrating logic separated that can be imported into the scripts and test files. Feel free to update this later! 
+import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes, recipeData, recipesPromise } from './apiCalls.js';
+Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
+Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
+let recipe = [];
 
-import ingredientsData from './data/ingredients.js';
-import recipeData from './data/recipes.js';
 
-export const findRecipeIngredients = recipeName => {
-  var ingredientList = [];
-  let recipe = recipeData.find((matchingName) => recipeName === matchingName.name);
+export const findRecipeIngredients = (recipeName) => {
+  
+  Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
+  Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
+
+   recipe = recipeData.find((matchingName) => recipeName === matchingName.name);
+  var listOfFoods = [];
   for (var i = 0; i < recipe.ingredients.length; i++) {
-    var currentIngredient = ingredientsData.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
-    ingredientList.push(" " +currentIngredient.name);
+    var currentIngredient = ingredientList.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
+    listOfFoods.push(" " +currentIngredient.name);
   }
-  return ingredientList;
+  return listOfFoods;
 }
 
 
 export const findRecipeTag = (recipeList, tag) => {
+  Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
+  Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
+  
 
   let thatRecipe = recipeList.filter((recipes) => {
     return recipes.tags.includes(tag)
@@ -22,12 +31,14 @@ export const findRecipeTag = (recipeList, tag) => {
   let mapRecipe = thatRecipe.map((food) => {
     return food.name
   });
-  console.log(mapRecipe);
   return mapRecipe
 };
 
 
 export const findRecipeName = (recipe, name) => {
+  Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
+  Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
+  
   let thisRecipe = recipe.filter((recipes) => {
     if (recipes.name.includes(name)) {
       return recipe
@@ -38,10 +49,13 @@ export const findRecipeName = (recipe, name) => {
 
 
 export const findRecipePrice = (recipe) => {
+  Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
+  Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
+  
 
   var pricePerIngredient = [];
   for (var i = 0; i < recipe.ingredients.length; i++) {
-    var currentIngredient = ingredientsData.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
+    var currentIngredient = ingredientList.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
     var priceForThisIngredient = (currentIngredient.estimatedCostInCents * recipe.ingredients[i].quantity.amount)
     pricePerIngredient.push(priceForThisIngredient);
   }
@@ -52,8 +66,16 @@ export const findRecipePrice = (recipe) => {
 }
 
 export const findRecipeInstructions = (recipe, recipeName) => {
+  Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
+  Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
+  
   let userRecipe = recipe.find((recipes) => {
     return recipes.name === recipeName
   })
   return userRecipe.instructions
 };
+
+export{
+  recipeData,
+  ingredientList
+}

@@ -1,14 +1,17 @@
 
-import ingredientsData from './data/ingredients.js';
-import recipeData from './data/recipes.js';
-import usersData from './data/users.js';
-import { findRecipeIngredients, findRecipeTag, findRecispeName, findRecipePrice } from '../src/recipes.js';
+// import ingredientsData from './data/ingredients.js';
+// // import recipeData from './data/recipes.js';
+// // import usersData from './data/users.js';
+import { userPromise, currentUser, randomUser, recipesPromise, ingredientsPromise } from './apiCalls.js';
+import { findRecipeIngredients, recipeData, ingredientList, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
 
 // const allRecipesButton = document.querySelector('.all-recipes-button');
 const allRecipesButton = document.querySelector('.allRecipes');
 const recipeDisplaySection = document.querySelector('.recipe-list-display');
 const searchUserRecipes = document.querySelector('#savedRecipeInput')
+const aboutUs = document.querySelector('.aboutUs-btn')
+const logIn = document.querySelector('.logged-in-as')
 
 const searchRecipes = document.querySelector('#searchInput')
 
@@ -19,6 +22,7 @@ const searchRecipesBtn = document.querySelector('#quick-search-button')
 const homeViewBtn = document.querySelector('.home-btn')
 const homeView = document.querySelector('#home-page')
 const savedRecipes = document.querySelector('.user-recipes-button')
+const savedRecipes2 = document.querySelector('.user-recipes-button2')
 const userSearchDisplay = document.querySelector('.best-selection')
 const breakfastTag = document.querySelector('.breakfast')
 const sideTag = document.querySelector('.side-dish')
@@ -28,29 +32,45 @@ const dinnerTag = document.querySelector('.dinner')
 const brunchTag = document.querySelector('.brunch')
 const saladTag = document.querySelector('.salad')
 const snackTag = document.querySelector('.snack')
+const breakfastTagSaved = document.querySelector('.breakfast-saved')
+const sideTagSaved = document.querySelector('.side-dish-saved')
+const lunchTagSaved = document.querySelector('.lunch-saved')
+const appetizerTagSaved = document.querySelector('.appetizer-saved')
+const dinnerTagSaved = document.querySelector('.dinner-saved')
+const brunchTagSaved = document.querySelector('.brunch-saved')
+const saladTagSaved = document.querySelector('.salad-saved')
+const snackTagSaved = document.querySelector('.snack-saved')
 
 
 let recipesToCook = [];
 
-var currentRecipeSelection = recipeData;
+let userList = [];
 
+var currentRecipeSelection = recipeData;
+Promise.all([userPromise]).then((values) => {randomUser(values)});
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 }
 
-let currentUser = usersData[getRandomIndex(usersData)];
-console.log(currentUser);
 
 
 
 
-// searchRecipes.addEventListener
-// const recipeView = document.querySelector('')
-//Here is an example function just to demonstrate one way you can export/import between the two js files. You'll want to delete this once you get your own code going.
 
-// As a user, I should be able to view all recipes.
 
+//
+
+
+
+Promise.all([userPromise]).then((values) => {handleData(values)});
+
+
+const handleData = (response) => {
+    userList = response[0];
+    console.log(currentUser)
+logIn.innerHTML = currentUser.name;
+}
 
 
 
@@ -111,8 +131,10 @@ function showFullRecipe() {
 function saveRecipe() {
   var valForID = this.idVal;
   var recipeToSave = recipeData.find((recipe) => recipe.id === valForID);
+
   if (currentUser.recipesToCook.includes(recipeToSave)) {
     currentUser.recipesToCook.splice(currentUser.recipesToCook.indexOf(recipeToSave), 1);
+    
   }
   else {
     currentUser.recipesToCook.push(recipeToSave);
@@ -143,7 +165,6 @@ function allowToggle() {
 }
 
 
-// showFullRecipe should take in the id of the recipe, find the corresponding section by id, then toggle each of the classes' visibility (except image)
 
 // As a user, I should be able to search recipes by their name. (Extension option: by name or ingredients)
 const userInput = () => {
@@ -166,7 +187,11 @@ function findByTag() {
   currentRecipeSelection = recipeData.filter(recipe => recipe.tags.includes(tagInput))
   displayRecipes();
 };
-
+function recipesToCookFindByTag (){
+  var tagInput = this.tag;
+  currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.tags.includes(tagInput)))
+  displayRecipes();
+}
 const tagInitialize = () => {
   breakfastTag.tag = "breakfast";
   breakfastTag.addEventListener('click', findByTag);
@@ -193,6 +218,33 @@ const tagInitialize = () => {
 
   snackTag.tag = "snack";
   snackTag.addEventListener('click', findByTag);
+  
+
+  breakfastTagSaved.tag = "breakfast";
+  breakfastTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  sideTagSaved.tag = "side dish";
+  sideTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  lunchTagSaved.tag = "lunch";
+  lunchTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+
+  appetizerTagSaved.tag = "appetizer";
+  appetizerTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  dinnerTagSaved.tag = "dinner";
+  dinnerTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  brunchTagSaved.tag = "brunch";
+  brunchTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  saladTagSaved.tag = "salad";
+  saladTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+
+  snackTagSaved.tag = "snack";
+  snackTagSaved.addEventListener('click', recipesToCookFindByTag);
 };
 
 tagInitialize();
@@ -233,19 +285,15 @@ const savedRecipesPage = () => {
   allowToggle();
 };
 
-const recipesToCookFindByTag = () => {
-  var tagInput = this.tag;
-  currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.tags.includes(tagInput)))
-  displayRecipes();
-}
+
 const recipesToCookFindByName = () => {
   const input = document.getElementById('savedRecipeInput').value
-  // console.log('Bobers input:', input)
   currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.name.includes(input)));
   displayRecipes();
 }
 
 savedRecipes.addEventListener('click', savedRecipesPage)
+savedRecipes2.addEventListener('click', savedRecipesPage)
 
 searchUserRecipesBtn.addEventListener('click', recipesToCookFindByName)
 
