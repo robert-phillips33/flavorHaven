@@ -7,7 +7,6 @@ let recipe = [];
 
 export const findRecipeIngredients = (recipeName) => {
   
-  // var ingredientList = [];
   Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
   Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
 

@@ -35,8 +35,6 @@ const snackTag = document.querySelector('.snack')
 let recipesToCook = [];
 
 let userList = [];
-// let ingredientList = [];
-// let recipeData = [];
 
 var currentRecipeSelection = recipeData;
 Promise.all([userPromise]).then((values) => {randomUser(values)});
@@ -56,8 +54,6 @@ const getRandomIndex = (array) => {
 
 
 Promise.all([userPromise]).then((values) => {handleData(values)});
-// Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
-// Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
 
 
 const handleData = (response) => {
@@ -65,16 +61,6 @@ const handleData = (response) => {
     console.log(currentUser)
 logIn.innerHTML = currentUser.name;
 }
-// const handleIngredients = (response)=>{
-//   ingredientList = response[0];
-//   console.log(ingredientList)
-
-// }
-// const handleRecipes = (response)=>{
-//   recipeData = response[0];
-//   console.log(recipeData)
-
-// }
 
 
 
@@ -169,7 +155,6 @@ function allowToggle() {
 }
 
 
-// showFullRecipe should take in the id of the recipe, find the corresponding section by id, then toggle each of the classes' visibility (except image)
 
 // As a user, I should be able to search recipes by their name. (Extension option: by name or ingredients)
 const userInput = () => {
