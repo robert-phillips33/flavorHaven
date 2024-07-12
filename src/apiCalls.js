@@ -1,9 +1,9 @@
 // Your fetch requests will live here!
 let currentUser;
-const userPromise =fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/users").then((response)=> response.json());
+const userPromise = fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/users").then((response) => response.json());
 console.log(userPromise);
-const ingredientsPromise =fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/ingredients").then((response)=> response.json());
-const recipesPromise =fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/recipes").then((response)=> response.json());
+const ingredientsPromise = fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/ingredients").then((response) => response.json());
+const recipesPromise = fetch("https://what-s-cookin-starter-kit.herokuapp.com/api/v1/recipes").then((response) => response.json());
 
 let userList;
 let ingredientList;
@@ -15,15 +15,15 @@ const randomUser = (response) => {
     console.log(currentUser.name)
 }
 const getRandomIndex = (array) => {
-  return Math.floor(Math.random() * array.length);
+    return Math.floor(Math.random() * array.length);
 }
-const handleIngredients = (response)=>{
-    ingredientList = response[0].ingredients;  
-  }
-  const handleRecipes = (response)=>{
-    recipeData = response[0].recipes;  
-  }
-  
+const handleIngredients = (response) => {
+    ingredientList = response[0].ingredients;
+}
+const handleRecipes = (response) => {
+    recipeData = response[0].recipes;
+}
+
 
 
 export {

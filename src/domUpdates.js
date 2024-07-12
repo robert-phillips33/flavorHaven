@@ -22,6 +22,7 @@ const searchRecipesBtn = document.querySelector('#quick-search-button')
 const homeViewBtn = document.querySelector('.home-btn')
 const homeView = document.querySelector('#home-page')
 const savedRecipes = document.querySelector('.user-recipes-button')
+const savedRecipes2 = document.querySelector('.user-recipes-button2')
 const userSearchDisplay = document.querySelector('.best-selection')
 const breakfastTag = document.querySelector('.breakfast')
 const sideTag = document.querySelector('.side-dish')
@@ -31,6 +32,15 @@ const dinnerTag = document.querySelector('.dinner')
 const brunchTag = document.querySelector('.brunch')
 const saladTag = document.querySelector('.salad')
 const snackTag = document.querySelector('.snack')
+const breakfastTagSaved = document.querySelector('.breakfast-saved')
+const sideTagSaved = document.querySelector('.side-dish-saved')
+const lunchTagSaved = document.querySelector('.lunch-saved')
+const appetizerTagSaved = document.querySelector('.appetizer-saved')
+const dinnerTagSaved = document.querySelector('.dinner-saved')
+const brunchTagSaved = document.querySelector('.brunch-saved')
+const saladTagSaved = document.querySelector('.salad-saved')
+const snackTagSaved = document.querySelector('.snack-saved')
+
 
 let recipesToCook = [];
 
@@ -177,7 +187,11 @@ function findByTag() {
   currentRecipeSelection = recipeData.filter(recipe => recipe.tags.includes(tagInput))
   displayRecipes();
 };
-
+function recipesToCookFindByTag (){
+  var tagInput = this.tag;
+  currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.tags.includes(tagInput)))
+  displayRecipes();
+}
 const tagInitialize = () => {
   breakfastTag.tag = "breakfast";
   breakfastTag.addEventListener('click', findByTag);
@@ -204,6 +218,33 @@ const tagInitialize = () => {
 
   snackTag.tag = "snack";
   snackTag.addEventListener('click', findByTag);
+  
+
+  breakfastTagSaved.tag = "breakfast";
+  breakfastTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  sideTagSaved.tag = "side dish";
+  sideTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  lunchTagSaved.tag = "lunch";
+  lunchTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+
+  appetizerTagSaved.tag = "appetizer";
+  appetizerTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  dinnerTagSaved.tag = "dinner";
+  dinnerTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  brunchTagSaved.tag = "brunch";
+  brunchTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+  saladTagSaved.tag = "salad";
+  saladTagSaved.addEventListener('click', recipesToCookFindByTag);
+
+
+  snackTagSaved.tag = "snack";
+  snackTagSaved.addEventListener('click', recipesToCookFindByTag);
 };
 
 tagInitialize();
@@ -244,19 +285,15 @@ const savedRecipesPage = () => {
   allowToggle();
 };
 
-const recipesToCookFindByTag = () => {
-  var tagInput = this.tag;
-  currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.tags.includes(tagInput)))
-  displayRecipes();
-}
+
 const recipesToCookFindByName = () => {
   const input = document.getElementById('savedRecipeInput').value
-  // console.log('Bobers input:', input)
   currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.name.includes(input)));
   displayRecipes();
 }
 
 savedRecipes.addEventListener('click', savedRecipesPage)
+savedRecipes2.addEventListener('click', savedRecipesPage)
 
 searchUserRecipesBtn.addEventListener('click', recipesToCookFindByName)
 
