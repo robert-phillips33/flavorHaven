@@ -2,7 +2,7 @@
 import ingredientsData from './data/ingredients.js';
 import recipeData from './data/recipes.js';
 import usersData from './data/users.js';
-import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
+import { findRecipeIngredients, findRecipeTag, findRecispeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
 
 // const allRecipesButton = document.querySelector('.all-recipes-button');
@@ -13,11 +13,11 @@ const searchUserRecipes = document.querySelector('#savedRecipeInput')
 const searchRecipes = document.querySelector('#searchInput')
 
 const searchUserRecipesBtn = document.querySelector('#user-recipe-search-button')
+const savedRecipesView = document.querySelector('.saved-recipes')
 
 const searchRecipesBtn = document.querySelector('#quick-search-button')
 const homeViewBtn = document.querySelector('.home-btn')
 const homeView = document.querySelector('#home-page')
-const savedHomeView = homeView.innerHTML;
 const savedRecipes = document.querySelector('.user-recipes-button')
 const userSearchDisplay = document.querySelector('.best-selection')
 const breakfastTag = document.querySelector('.breakfast')
@@ -29,7 +29,6 @@ const brunchTag = document.querySelector('.brunch')
 const saladTag = document.querySelector('.salad')
 const snackTag = document.querySelector('.snack')
 
-// TODO: Replace with something that randomly selects, this is just for testing
 
 let recipesToCook = [];
 
@@ -56,6 +55,7 @@ console.log(currentUser);
 
 
 const displayRecipes = () => {
+  savedRecipesView.innerHTML = null;
   recipeDisplaySection.innerHTML = null;
   for (var i = 0; i < currentRecipeSelection.length; i++) {
 
@@ -65,15 +65,12 @@ const displayRecipes = () => {
 
     recipeDisplaySection.innerHTML += `
     <article class="single-food">
-      <h3 class="click-save-text">DOUBLE CLICK IMAGE FOR DETAILS</h3>
       <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
-        <div class="food-name">
             <img class='food-image' id = 'foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}'>
             <h2 class='food-name hidden' id = 'foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
             <button class='save-recipe hidden' id = 'saveRecipe${currentRecipeSelection[i].id}'>Save This Recipe!</button>
 
-            <h3 class='total-price hidden' id = 'foodPrice${currentRecipeSelection[i].id}'>Total price in American Cents : ${findRecipePrice(currentRecipeSelection[i])} </h3>
-        </div>
+            <h3 class='total-price hidden' id = 'foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i]))} </h3>
         <div class="food-ingredient">
           <h3 class='ingredients hidden' id = 'ingredients${currentRecipeSelection[i].id}'> ${findRecipeIngredients(currentRecipeSelection[i].name)}</h3>
         </div>
@@ -111,14 +108,13 @@ function showFullRecipe() {
 
 };
 
-function saveRecipe(){
+function saveRecipe() {
   var valForID = this.idVal;
-  var recipeToSave = recipeData.find((recipe)=> recipe.id === valForID);
-  if(currentUser.recipesToCook.includes(recipeToSave))
-  {
+  var recipeToSave = recipeData.find((recipe) => recipe.id === valForID);
+  if (currentUser.recipesToCook.includes(recipeToSave)) {
     currentUser.recipesToCook.splice(currentUser.recipesToCook.indexOf(recipeToSave), 1);
   }
-  else{
+  else {
     currentUser.recipesToCook.push(recipeToSave);
   }
 
@@ -156,7 +152,6 @@ const userInput = () => {
   currentRecipeSelection = recipeData.filter(recipe => recipe.name.includes(input))
   displayRecipes();
   // displayResults(results)
-  // console.log('helooooooo')
 };
 
 searchRecipesBtn.addEventListener('click', userInput)
@@ -203,16 +198,8 @@ const tagInitialize = () => {
 tagInitialize();
 
 
-
-//HOME button
-const homePageView = () => {
-  homeView.innerHTML = savedHomeView;
-}
-homeViewBtn.addEventListener('click', homePageView)
-
 //SAVE RECIPES
 const savedRecipesPage = () => {
-  let savedRecipesView = document.querySelector('.saved-recipes')
   currentRecipeSelection = currentUser.recipesToCook;
   savedRecipesView.innerHTML = null;
   recipeDisplaySection.innerHTML = null;
@@ -225,15 +212,11 @@ const savedRecipesPage = () => {
 
     savedRecipesView.innerHTML += `
     <article class="single-food">
-      <h3 class="click-save-text">DOUBLE CLICK IMAGE TO SAVE</h3>
       <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
-        <div class="food-name">
             <img class='food-image' id = 'foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}'>
             <h2 class='food-name hidden' id = 'foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
-            <button class='save-recipe hidden' id = 'saveRecipe${currentRecipeSelection[i].id}'>Save (or Unsave) This!</button>
-
-            <h3 class='total-price hidden' id = 'foodPrice${currentRecipeSelection[i].id}'>Total price in American Cents : ${findRecipePrice(currentRecipeSelection[i])} </h3>
-        </div>
+            <button class='save-recipe hidden' id = 'saveRecipe${currentRecipeSelection[i].id}'>Unsave This Recipe!</button>
+            <h3 class='total-price hidden' id = 'foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i]))} </h3>
         <div class="food-ingredient">
           <h3 class='ingredients hidden' id = 'ingredients${currentRecipeSelection[i].id}'> ${findRecipeIngredients(currentRecipeSelection[i].name)}</h3>
         </div>
@@ -272,16 +255,24 @@ const addToSavedRecipe = (recipe) => {
   }
 }
 
+//HOME button
+
+
+const homePageView = () => {
+  savedRecipesView.innerHTML = null;
+  recipeDisplaySection.innerHTML = null;
+}
+homeViewBtn.addEventListener('click', homePageView)
 
 //To display a dollar
-// const centsToDollarAmount = () => {
-//   return cents / 100
-// }
+const centsToDollarAmount = (cents) => {
+  return cents / 100
+}
 
 export {
   displayRecipes,
   userInput,
   savedRecipesPage,
-  addToSavedRecipe
-  // changePageToHome
+  addToSavedRecipe,
+  homePageView
 }

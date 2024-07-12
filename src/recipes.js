@@ -8,7 +8,7 @@ export const findRecipeIngredients = recipeName => {
   let recipe = recipeData.find((matchingName) => recipeName === matchingName.name);
   for (var i = 0; i < recipe.ingredients.length; i++) {
     var currentIngredient = ingredientsData.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
-    ingredientList.push(currentIngredient.name);
+    ingredientList.push(" " +currentIngredient.name);
   }
   return ingredientList;
 }
