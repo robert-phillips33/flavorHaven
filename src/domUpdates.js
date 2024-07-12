@@ -272,14 +272,6 @@ const addToSavedRecipe = (recipe) => {
   }
 }
 
-// const removeSavedRecipe = () => {
-// let targetRecipe = cureentRecipe
-// for(var i =0; i < recipesToCook.length; i++) {
-// if(targetRecipe === recipesToCook[i]) {
-// recipesToCook.splice(i, 1)
-// }
-// }
-// }
 
 //To display a dollar
 // const centsToDollarAmount = () => {
