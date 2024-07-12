@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 // const chai = require('chai');
 // const expect = chai.expect;
-import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
+import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, findRecipeInstructions } from '../src/recipes.js';
 import recipeData from '../src/data/recipes.js';
 import ingredientsData from '../src/data/ingredients.js';
 
@@ -10,7 +10,7 @@ describe('findRecipeIngredients', () => {
     expect(findRecipeIngredients).to.be.a('function');
   });
   it('should get list of names', () => {
-    const response = findRecipeIngredients(recipeData[13]);
+    const response = findRecipeIngredients(recipeData[13].name);
     expect(response).to.deep.equal([
       'black pepper',
       'butter',
@@ -30,7 +30,8 @@ describe('findRecipeTag', () => {
 
   it('Should return a filtered list of recipes based on a tag', () => {
     const recipeTag = findRecipeTag(recipeData, 'sauce')
-    expect(recipeTag).to.deep.equal('Dirty Steve\'s Original Wing Sauce')
+    console.log(recipeTag)
+    expect(recipeTag).to.deep.equal(['Dirty Steve\'s Original Wing Sauce'])
   });
 });
 
@@ -46,22 +47,22 @@ describe('findRecipeName', () => {
 });
 
 describe('findRecipePrice', () => {
-  it.skip('Should be a function', () => {
+  it('Should be a function', () => {
     expect(findRecipePrice).to.be.a('function');
   });
 
-  it.skip('should have the right price total', () => {
+  it('should have the right price total', () => {
     const price = findRecipePrice(recipeData[5])
     expect(price).to.equal(18880.25);
   });
 });
 
 describe('findRecipeInstructions', function() {
-  it.skip('should be a function', function() {
+  it('should be a function', function() {
     expect(findRecipeInstructions).to.be.a('function');
   });
 
-  it.skip('should return the instructions for a given recipe', function() {
+  it('should return the instructions for a given recipe', function() {
     const userRecipe = findRecipeInstructions(recipeData, 'Pastry Cream')
     expect(userRecipe).to.deep.equal([
       {
