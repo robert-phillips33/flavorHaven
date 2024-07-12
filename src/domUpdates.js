@@ -1,14 +1,17 @@
 
 import ingredientsData from './data/ingredients.js';
-import recipeData from './data/recipes.js';
-import usersData from './data/users.js';
-import { findRecipeIngredients, findRecipeTag, findRecispeName, findRecipePrice } from '../src/recipes.js';
+// import recipeData from './data/recipes.js';
+// import usersData from './data/users.js';
+import { userPromise, currentUser, randomUser, recipesPromise, ingredientsPromise } from './apiCalls.js';
+import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
 
 // const allRecipesButton = document.querySelector('.all-recipes-button');
 const allRecipesButton = document.querySelector('.allRecipes');
 const recipeDisplaySection = document.querySelector('.recipe-list-display');
 const searchUserRecipes = document.querySelector('#savedRecipeInput')
+const aboutUs = document.querySelector('.aboutUs-btn')
+const logIn = document.querySelector('.logged-in-as')
 
 const searchRecipes = document.querySelector('#searchInput')
 
@@ -29,28 +32,42 @@ const brunchTag = document.querySelector('.brunch')
 const saladTag = document.querySelector('.salad')
 const snackTag = document.querySelector('.snack')
 
-
 let recipesToCook = [];
 
-var currentRecipeSelection = recipeData;
+let userList = [];
 
+let recipeData = [];
+
+var currentRecipeSelection = recipeData;
+Promise.all([userPromise]).then((values) => {randomUser(values)});
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 }
 
-let currentUser = usersData[getRandomIndex(usersData)];
-console.log(currentUser);
 
 
 
 
-// searchRecipes.addEventListener
-// const recipeView = document.querySelector('')
-//Here is an example function just to demonstrate one way you can export/import between the two js files. You'll want to delete this once you get your own code going.
 
-// As a user, I should be able to view all recipes.
 
+//
+
+
+
+Promise.all([userPromise]).then((values) => {handleData(values)});
+
+
+const handleData = (response) => {
+    userList = response[0];
+    console.log(currentUser)
+logIn.innerHTML = currentUser.name;
+}
+const handleIngredients = (response)=>{
+    recipeList = response[0];
+    console.log(recipeList)
+
+}
 
 
 
@@ -111,8 +128,10 @@ function showFullRecipe() {
 function saveRecipe() {
   var valForID = this.idVal;
   var recipeToSave = recipeData.find((recipe) => recipe.id === valForID);
+
   if (currentUser.recipesToCook.includes(recipeToSave)) {
     currentUser.recipesToCook.splice(currentUser.recipesToCook.indexOf(recipeToSave), 1);
+    
   }
   else {
     currentUser.recipesToCook.push(recipeToSave);

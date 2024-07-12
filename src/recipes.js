@@ -2,6 +2,7 @@
 
 import ingredientsData from './data/ingredients.js';
 import recipeData from './data/recipes.js';
+import { ingredientsPromise, recipesPromise } from './apiCalls.js';
 
 export const findRecipeIngredients = recipeName => {
   var ingredientList = [];
