@@ -215,6 +215,8 @@ const savedRecipesPage = () => {
   let savedRecipesView = document.querySelector('.saved-recipes')
   currentRecipeSelection = currentUser.recipesToCook;
   savedRecipesView.innerHTML = null;
+  recipeDisplaySection.innerHTML = null;
+
   for (var i = 0; i < currentRecipeSelection.length; i++) {
 
     var instructionText = [];
@@ -269,6 +271,7 @@ const addToSavedRecipe = (recipe) => {
     recipesToCook.push(recipe)
   }
 }
+
 
 //To display a dollar
 // const centsToDollarAmount = () => {

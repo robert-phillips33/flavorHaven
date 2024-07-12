@@ -22,6 +22,7 @@ export const findRecipeTag = (recipeList, tag) => {
   let mapRecipe = thatRecipe.map((food) => {
     return food.name
   });
+  console.log(mapRecipe);
   return mapRecipe
 };
 
