@@ -31,6 +31,7 @@ header {
   /* border: 1px solid black; */
   height: 2px;
   background-color: rgb(255, 222, 160);
+  border: 2px solid white;
   align-items: center;
   justify-content: space-between;
   
@@ -44,6 +45,14 @@ header {
 
 h1 {
   margin-bottom: 0%;
+  margin-left: 10px;
+}
+
+.logo-container {
+  display: flex;
+  height: 90px;
+  margin-top: 30px;
+  
 }
 
 .nav-list ul {
@@ -74,6 +83,8 @@ h1 {
   cursor: pointer;
 }
 
+
+
 /*
 ***********************************************
 *>>>>>>>>> MID-PAGE / RECIPE BUTTONS <<<<<<<<<*
@@ -103,15 +114,16 @@ h1 {
   color: black;
   padding: 16px;
   font-size: 24px;
-  border: none;
+  border: 1.5px solid white;
   width: 200px;
   margin-top: 20px;
   cursor: pointer;
   margin-left: 50px;
+  border-radius: 5px;
 }
 
 .user-recipes-button {
-  margin-left: 100px;
+  margin-left: 50px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -145,7 +157,7 @@ h1 {
 .quick-search {
   display: flex;
   justify-content: center;
-  border: 3px solid;
+  border: 3px solid white;
   margin: 80px;
   padding: 150px 75px 150px 75px;
   /* background-image: linear-gradient((rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('./images/flavor-haven-header-background.png')); */
@@ -158,9 +170,10 @@ h1 {
 .input-bar {
   border-radius: 5px;
   border: none;
-  width: 200px;
+  width: 250px;
   font-size: medium;
-  /* font-weight: 100; */
+  background-color: rgb(255, 222, 160);
+  border: 2px solid white;
 }
 
 .input-bar::placeholder {
@@ -175,6 +188,8 @@ opacity: 0;}
 .search-button {
   border-radius: 10px;
   width: 90px;
+  background-color: rgb(255, 222, 160);
+  border: 1.5px solid white;
 }
 
 .search-button:hover {
@@ -360,8 +375,10 @@ li {
 
 /*---------NEW ------*/
 .title-img {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
+  margin-top: 25px;
+  
 }
 
 .save-recipe {
