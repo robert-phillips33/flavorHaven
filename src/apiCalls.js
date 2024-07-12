@@ -18,14 +18,10 @@ const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 }
 const handleIngredients = (response)=>{
-    ingredientList = response[0].ingredients;
-    // console.log(ingredientList)
-  
+    ingredientList = response[0].ingredients;  
   }
   const handleRecipes = (response)=>{
-    recipeData = response[0].recipes;
-    // console.log(recipeData)
-  
+    recipeData = response[0].recipes;  
   }
   
 
