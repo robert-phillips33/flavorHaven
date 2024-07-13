@@ -1,5 +1,7 @@
 //Here is an example demonstrating logic separated that can be imported into the scripts and test files. Feel free to update this later! 
-import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes, recipeData, recipesPromise } from './apiCalls.js';
+import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes,  recipesPromise } from './apiCalls.js';
+import ingredientsData from './data/ingredients.js';
+import recipeData from './data/recipes.js';
 Promise.all([ingredientsPromise]).then((values) => {handleIngredients(values)});
 Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
 let recipe = [];
@@ -13,8 +15,8 @@ export const findRecipeIngredients = (recipeName) => {
    recipe = recipeData.find((matchingName) => recipeName === matchingName.name);
   var listOfFoods = [];
   for (var i = 0; i < recipe.ingredients.length; i++) {
-    var currentIngredient = ingredientList.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
-    listOfFoods.push(" " +currentIngredient.name);
+    var currentIngredient = ingredientsData.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
+    listOfFoods.push("" +currentIngredient.name);
   }
   return listOfFoods;
 }
@@ -53,16 +55,21 @@ export const findRecipePrice = (recipe) => {
   Promise.all([recipesPromise]).then((values) => {handleRecipes(values)});
   
 
-  var pricePerIngredient = [];
-  for (var i = 0; i < recipe.ingredients.length; i++) {
-    var currentIngredient = ingredientList.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
-    var priceForThisIngredient = (currentIngredient.estimatedCostInCents * recipe.ingredients[i].quantity.amount)
-    pricePerIngredient.push(priceForThisIngredient);
-  }
-  var initVal = 0;
-  var totalValue = pricePerIngredient.reduce((accumulatorVal, currentVal) => accumulatorVal + currentVal, initVal,);
-  return totalValue;
-
+  // var pricePerIngredient = [];
+  // for (var i = 0; i < recipe.ingredients.length; i++) {
+  //   var currentIngredient = ingredientList.find((ingredient) => ingredient.id === recipe.ingredients[i].id);
+  //   var priceForThisIngredient = (currentIngredient.estimatedCostInCents * recipe.ingredients[i].quantity.amount)
+  //   pricePerIngredient.push(priceForThisIngredient);
+  // }
+  // var initVal = 0;
+  // var totalValue = pricePerIngredient.reduce((accumulatorVal, currentVal) => accumulatorVal + currentVal, initVal,);
+  // return totalValue;
+  var totalValue = recipe.ingredients.reduce((accumulatorVal, currentIngredient) => {
+    var foundIngredient = ingredientsData.find(ingredient => ingredient.id === currentIngredient.id)
+    var priceForThisIngredient = foundIngredient.estimatedCostInCents * currentIngredient.quantity.amount
+    return accumulatorVal + priceForThisIngredient
+  }, 0)
+  return totalValue
 }
 
 export const findRecipeInstructions = (recipe, recipeName) => {
