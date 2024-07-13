@@ -2,24 +2,31 @@ import { expect } from 'chai';
 // const chai = require('chai');
 // const expect = chai.expect;
 import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, findRecipeInstructions } from '../src/recipes.js';
+// import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes,  recipesPromise } from '../src/apiCalls.js';
 import recipeData from '../src/data/recipes.js';
 import ingredientsData from '../src/data/ingredients.js';
+import newRecipeData from '../src/data/recipesSample.js';
 
 describe('findRecipeIngredients', () => {
   it('Should be a function', () => {
     expect(findRecipeIngredients).to.be.a('function');
   });
   it('should get list of names', () => {
-    const response = findRecipeIngredients(recipeData[13].name);
-    expect(response).to.deep.equal([
-      'black pepper',
-      'butter',
-      'flat leaf parsley leaves',
+    const myRecipeIngredient = findRecipeIngredients(newRecipeData[1].name);
+    // console.log(newRecipeData[1].ingredients)
+    expect(myRecipeIngredient).to.deep.equal([
+      'apple cider',
+      'apple',
+      'corn starch',
+      'dijon style mustard',
       'whole garlic clove',
-      'dried red chili',
-      'salt',
-      'jumbo shrimp',
-      'vidalia onion'])
+      'whole grain dijon mustard',
+      'maple',
+      'miso',
+      'pork chop',
+      's&p',
+      'soy sauce',
+      'sriracha sauce'])
   });
 })
 
@@ -30,7 +37,6 @@ describe('findRecipeTag', () => {
 
   it('Should return a filtered list of recipes based on a tag', () => {
     const recipeTag = findRecipeTag(recipeData, 'sauce')
-    console.log(recipeTag)
     expect(recipeTag).to.deep.equal(['Dirty Steve\'s Original Wing Sauce'])
   });
 });
@@ -41,8 +47,8 @@ describe('findRecipeName', () => {
     expect(findRecipeName).to.be.a('function');
   });
   it('should get a matching name', () => {
-    const response = findRecipeName(recipeData, 'Chocolate');
-    expect(response[0].name).to.equal('Loaded Chocolate Chip Pudding Cookie Cups')
+    const recipeName = findRecipeName(recipeData, 'Chocolate');
+    expect(recipeName[0].name).to.equal('Loaded Chocolate Chip Pudding Cookie Cups')
   });
 });
 
@@ -52,8 +58,8 @@ describe('findRecipePrice', () => {
   });
 
   it('should have the right price total', () => {
-    const price = findRecipePrice(recipeData[5])
-    expect(price).to.equal(18880.25);
+    const recipePrice = findRecipePrice(recipeData[5])
+    expect(recipePrice).to.equal(18880.25);
   });
 });
 

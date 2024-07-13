@@ -10,4 +10,3 @@ import recipeData from './data/recipes'
 import ingredientsData from './data/ingredients'
 import { findRecipeIngredients } from './recipes';
 import { displayRecipes, userInput, displayResults } from './domUpdates'
-
