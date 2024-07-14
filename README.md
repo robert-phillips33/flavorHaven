@@ -45,14 +45,22 @@
 
 
 ## Learning Goals:
-- 
+- Utilize `object` and `array` prototype methods for effective data manipulation.
+
+- Create a user friendly interface that clearly presents information.
+
+- Develop a comprehensive testing suite using `Test-Driven Development` (TDD)
+
+- Perform network requests to fetch data. 
+
 
 ### Wins + Challenges 🏆:
 - Wins
-  - 
+  - We communicated effectively early on to set a side a schedule to work on this project.
+  - We discussed ideas and other perspectives before moving on to the next task.
 
 - Challenges
-  - 
+  - We had a problem importing images early on the project. We thought it would be adding the image in a file and writing the path in the source in the HTML file. But we learned we had to import it in the script JS file to display the image on the page. 
 
 
 ##
