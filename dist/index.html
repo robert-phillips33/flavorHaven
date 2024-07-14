@@ -18,12 +18,14 @@
       <ul>
         <li><button class="home-btn">Home</button></li>
         <li><button class="aboutUs-btn">About Us</button></li>
-        <li><section class="logged-in-as">put username here</section></li>
+        <li>
+          <section class="logged-in-as">put username here</section>
+        </li>
       </ul>
     </nav>
 
   </header>
-  
+
   <div class="dropdown">
     <button class="all-recipes-button">Recipes</button>
     <div class="dropdown-content">
@@ -34,20 +36,20 @@
           <th><a href="#" class="allRecipes">All</a></th>
         </tr>
         <tr>
-          <td><a href="#" class="breakfast">Breakfast</a></td>
-          <td><a href="#" class="side-dish">Side Dish</a></td>
+          <td><a href="#" class="tag" data-tag="breakfast">Breakfast</a></td>
+          <td><a href="#" class="tag" data-tag="side dish">Side Dish</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="lunch">Lunch</a></td>
-          <td><a href="#" class="appetizer">Appetizer</a></td>
+          <td><a href="#" class="tag" data-tag="lunch">Lunch</a></td>
+          <td><a href="#" class="tag" data-tag="appetizer">Appetizer</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="dinner">Dinner</a></td>
-          <td><a href="#" class="salad">Salad</a></td>
+          <td><a href="#" class="tag" data-tag="dinner">Dinner</a></td>
+          <td><a href="#" class="tag" data-tag="salad">Salad</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="brunch">Brunch</a></td>
-          <td><a href="#" class="snack">Snack</a></td>
+          <td><a href="#" class="tag" data-tag="brunch">Brunch</a></td>
+          <td><a href="#" class="tag" data-tag="snack">Snack</a></td>
         </tr>
         </thead>
       </table>
@@ -56,7 +58,9 @@
   <div class="dropdown">
     <button class="user-recipes-button">
       Saved Recipes
-    </button>    <div class="dropdown-content">
+    </button>
+
+    <div class="dropdown-content">
       <table>
         <tr>
           <th>Meals</th>
@@ -64,26 +68,26 @@
           <th><a href="#" class="user-recipes-button2">All</a></th>
         </tr>
         <tr>
-          <td><a href="#" class="breakfast-saved">Breakfast</a></td>
-          <td><a href="#" class="side-dish-saved">Side Dish</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="breakfast">Breakfast</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="side dish">Side Dish</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="lunch-saved">Lunch</a></td>
-          <td><a href="#" class="appetizer-saved">Appetizer</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="lunch">Lunch</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="appetizer">Appetizer</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="dinner-saved">Dinner</a></td>
-          <td><a href="#" class="salad-saved">Salad</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="dinner">Dinner</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="salad">Salad</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="brunch-saved">Brunch</a></td>
-          <td><a href="#" class="snack-saved">Snack</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="brunch">Brunch</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="snack">Snack</a></td>
         </tr>
         </thead>
       </table>
     </div>
   </div>
- 
+
   <section class="user-recipe-search">
     <div class="container">
       <input class="input-bar" id="savedRecipeInput" type="text" placeholder="search your saved recipes here!">
@@ -94,7 +98,7 @@
   <section class="quick-search">
     <div class="container">
       <input class="input-bar" id="searchInput" type="text" placeholder="search for recipes here!">
-      <button class="search-button" id = "quick-search-button">Search</button>
+      <button class="search-button" id="quick-search-button">Search</button>
     </div>
   </section>
   <!-- TEST BELOW -->

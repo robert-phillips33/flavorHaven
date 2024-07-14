@@ -14,7 +14,8 @@ body {
   margin: 0;
   /* background-color: #fbebca; */
   font-family: Arial, Helvetica, serif;
-  background: linear-gradient(150deg, #001FB8 20%, #1C3FEC 60%, #001268 100%);
+  color: #333333;
+  background-color: #F7F7F7;
   background-repeat: no-repeat;
 }
 

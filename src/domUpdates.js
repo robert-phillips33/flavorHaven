@@ -12,66 +12,36 @@ const recipeDisplaySection = document.querySelector('.recipe-list-display');
 const searchUserRecipes = document.querySelector('#savedRecipeInput')
 const aboutUs = document.querySelector('.aboutUs-btn')
 const logIn = document.querySelector('.logged-in-as')
-
 const searchRecipes = document.querySelector('#searchInput')
-
 const searchUserRecipesBtn = document.querySelector('#user-recipe-search-button')
 const savedRecipesView = document.querySelector('.saved-recipes')
-
 const searchRecipesBtn = document.querySelector('#quick-search-button')
 const homeViewBtn = document.querySelector('.home-btn')
 const homeView = document.querySelector('#home-page')
 const savedRecipes = document.querySelector('.user-recipes-button')
 const savedRecipes2 = document.querySelector('.user-recipes-button2')
 const userSearchDisplay = document.querySelector('.best-selection')
-const breakfastTag = document.querySelector('.breakfast')
-const sideTag = document.querySelector('.side-dish')
-const lunchTag = document.querySelector('.lunch')
-const appetizerTag = document.querySelector('.appetizer')
-const dinnerTag = document.querySelector('.dinner')
-const brunchTag = document.querySelector('.brunch')
-const saladTag = document.querySelector('.salad')
-const snackTag = document.querySelector('.snack')
-const breakfastTagSaved = document.querySelector('.breakfast-saved')
-const sideTagSaved = document.querySelector('.side-dish-saved')
-const lunchTagSaved = document.querySelector('.lunch-saved')
-const appetizerTagSaved = document.querySelector('.appetizer-saved')
-const dinnerTagSaved = document.querySelector('.dinner-saved')
-const brunchTagSaved = document.querySelector('.brunch-saved')
-const saladTagSaved = document.querySelector('.salad-saved')
-const snackTagSaved = document.querySelector('.snack-saved')
-
 
 let recipesToCook = [];
 
 let userList = [];
 
 var currentRecipeSelection = recipeData;
-Promise.all([userPromise]).then((values) => {randomUser(values)});
+Promise.all([userPromise]).then((values) => { randomUser(values) });
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 }
 
 
-
-
-
-
-
-//
-
-
-
-Promise.all([userPromise]).then((values) => {handleData(values)});
+Promise.all([userPromise]).then((values) => { handleData(values) });
 
 
 const handleData = (response) => {
-    userList = response[0];
-    console.log(currentUser)
-logIn.innerHTML = currentUser.name;
+  userList = response[0];
+  console.log(currentUser)
+  logIn.innerHTML = currentUser.name;
 }
-
 
 
 const displayRecipes = () => {
@@ -134,7 +104,7 @@ function saveRecipe() {
 
   if (currentUser.recipesToCook.includes(recipeToSave)) {
     currentUser.recipesToCook.splice(currentUser.recipesToCook.indexOf(recipeToSave), 1);
-    
+
   }
   else {
     currentUser.recipesToCook.push(recipeToSave);
@@ -164,87 +134,38 @@ function allowToggle() {
   }
 }
 
-
-
 // As a user, I should be able to search recipes by their name. (Extension option: by name or ingredients)
 const userInput = () => {
   const input = document.getElementById('searchInput').value
-  // console.log('Bobers input:', input)
-  currentRecipeSelection = recipeData.filter(recipe => recipe.name.includes(input))
+  currentRecipeSelection = findRecipeName(recipeData, input)
   displayRecipes();
-  // displayResults(results)
 };
 
 searchRecipesBtn.addEventListener('click', userInput)
 
-
-
-
 // filtering by tag
 
-function findByTag() {
-  var tagInput = this.tag;
+function findByTag(tagInput) {
   currentRecipeSelection = recipeData.filter(recipe => recipe.tags.includes(tagInput))
   displayRecipes();
 };
-function recipesToCookFindByTag (){
-  var tagInput = this.tag;
+function recipesToCookFindByTag(tagInput) {
   currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.tags.includes(tagInput)))
   displayRecipes();
 }
+
 const tagInitialize = () => {
-  breakfastTag.tag = "breakfast";
-  breakfastTag.addEventListener('click', findByTag);
+  // add an event listener to each tag button to search
+  document.querySelectorAll(".tag")
+    .forEach(element => {
+      element.addEventListener('click', (e) => findByTag(e.target.dataset.tag))
+    })
 
-  sideTag.tag = "side dish";
-  sideTag.addEventListener('click', findByTag);
-
-  lunchTag.tag = "lunch";
-  lunchTag.addEventListener('click', findByTag);
-
-
-  appetizerTag.tag = "appetizer";
-  appetizerTag.addEventListener('click', findByTag);
-
-  dinnerTag.tag = "dinner";
-  dinnerTag.addEventListener('click', findByTag);
-
-  brunchTag.tag = "brunch";
-  brunchTag.addEventListener('click', findByTag);
-
-  saladTag.tag = "salad";
-  saladTag.addEventListener('click', findByTag);
-
-
-  snackTag.tag = "snack";
-  snackTag.addEventListener('click', findByTag);
-  
-
-  breakfastTagSaved.tag = "breakfast";
-  breakfastTagSaved.addEventListener('click', recipesToCookFindByTag);
-
-  sideTagSaved.tag = "side dish";
-  sideTagSaved.addEventListener('click', recipesToCookFindByTag);
-
-  lunchTagSaved.tag = "lunch";
-  lunchTagSaved.addEventListener('click', recipesToCookFindByTag);
-
-
-  appetizerTagSaved.tag = "appetizer";
-  appetizerTagSaved.addEventListener('click', recipesToCookFindByTag);
-
-  dinnerTagSaved.tag = "dinner";
-  dinnerTagSaved.addEventListener('click', recipesToCookFindByTag);
-
-  brunchTagSaved.tag = "brunch";
-  brunchTagSaved.addEventListener('click', recipesToCookFindByTag);
-
-  saladTagSaved.tag = "salad";
-  saladTagSaved.addEventListener('click', recipesToCookFindByTag);
-
-
-  snackTagSaved.tag = "snack";
-  snackTagSaved.addEventListener('click', recipesToCookFindByTag);
+  // add an event listener to each tag button to search
+  document.querySelectorAll(".recipe-tag")
+    .forEach(element => {
+      element.addEventListener('click', (e) => recipesToCookFindByTag(e.target.dataset.tag))
+    })
 };
 
 tagInitialize();
@@ -268,7 +189,7 @@ const savedRecipesPage = () => {
             <img class='food-image' id = 'foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}'>
             <h2 class='food-name hidden' id = 'foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
             <button class='save-recipe hidden' id = 'saveRecipe${currentRecipeSelection[i].id}'>Unsave This Recipe!</button>
-            <h3 class='total-price hidden' id = 'foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i]))} </h3>
+            <h3 class='total-price hidden' id = 'foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i])).toFixed(2)} </h3>
         <div class="food-ingredient">
           <h3 class='ingredients hidden' id = 'ingredients${currentRecipeSelection[i].id}'> ${findRecipeIngredients(currentRecipeSelection[i].name)}</h3>
         </div>
@@ -288,7 +209,7 @@ const savedRecipesPage = () => {
 
 const recipesToCookFindByName = () => {
   const input = document.getElementById('savedRecipeInput').value
-  currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.name.includes(input)));
+  currentRecipeSelection = findRecipeName(recipeData, input)
   displayRecipes();
 }
 
