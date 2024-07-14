@@ -13,7 +13,6 @@ describe('findRecipeIngredients', () => {
   });
   it('should get list of names', () => {
     const myRecipeIngredient = findRecipeIngredients(newRecipeData[1].name);
-    // console.log(newRecipeData[1].ingredients)
     expect(myRecipeIngredient).to.deep.equal([
       'apple cider',
       'apple',
