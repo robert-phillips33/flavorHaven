@@ -18,6 +18,8 @@ const homeView = document.querySelector('#home-page');
 const savedRecipes = document.querySelector('.user-recipes-button');
 const savedRecipes2 = document.querySelector('.user-recipes-button2');
 const userSearchDisplay = document.querySelector('.best-selection');
+const emailSignUp = document.querySelector('#email-input')
+const emailSignUpBtn = document.querySelector('#email-button')
 let recipesToCook = [];
 let userList = [];
 
@@ -234,10 +236,21 @@ const centsToDollarAmount = (cents) => {
   return cents / 100
 };
 
+const userSignUp = () => {
+  const email = emailSignUp.value;
+  if(email) {
+    alert('Thank you for joining the Flavor Haven Family!')
+  } else {
+    alert('Please enter a valid email!')
+  }
+}
+emailSignUpBtn.addEventListener('click', userSignUp)
+
 export {
   displayRecipes,
   userInput,
   savedRecipesPage,
   addToSavedRecipe,
-  homePageView
+  homePageView,
+  userSignUp
 };
