@@ -20,13 +20,13 @@ export const findRecipeIngredients = (recipeName) => {
 
 export const findRecipeTag = (recipeList, tag) => {
 
-  let thatRecipe = recipeList.filter((recipes) => {
+  let recipeTag = recipeList.filter((recipes) => {
     return recipes.tags.includes(tag)
   });
-  let mapRecipe = thatRecipe.map((food) => {
+  let newRecipeTag = recipeTag.map((food) => {
     return food.name
   });
-  return mapRecipe
+  return newRecipeTag
 };
 
 
@@ -59,7 +59,7 @@ export const findRecipeInstructions = (recipe, recipeName) => {
   return userRecipe.instructions
 };
 
-export {
+export{
   recipeData,
-  ingredientList
+  ingredientList,
 }
