@@ -1,7 +1,4 @@
 
-// import ingredientsData from './data/ingredients.js';
-// // import recipeData from './data/recipes.js';
-// // import usersData from './data/users.js';
 import { userPromise, currentUser, randomUser, recipesPromise, ingredientsPromise } from './apiCalls.js';
 import { findRecipeIngredients, recipeData, ingredientList, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
@@ -9,29 +6,28 @@ import { result } from 'lodash';
 // const allRecipesButton = document.querySelector('.all-recipes-button');
 const allRecipesButton = document.querySelector('.allRecipes');
 const recipeDisplaySection = document.querySelector('.recipe-list-display');
-const searchUserRecipes = document.querySelector('#savedRecipeInput')
-const aboutUs = document.querySelector('.aboutUs-btn')
-const logIn = document.querySelector('.logged-in-as')
-const searchRecipes = document.querySelector('#searchInput')
-const searchUserRecipesBtn = document.querySelector('#user-recipe-search-button')
-const savedRecipesView = document.querySelector('.saved-recipes')
-const searchRecipesBtn = document.querySelector('#quick-search-button')
-const homeViewBtn = document.querySelector('.home-btn')
-const homeView = document.querySelector('#home-page')
-const savedRecipes = document.querySelector('.user-recipes-button')
-const savedRecipes2 = document.querySelector('.user-recipes-button2')
-const userSearchDisplay = document.querySelector('.best-selection')
-
+const searchUserRecipes = document.querySelector('#savedRecipeInput');
+const aboutUs = document.querySelector('.aboutUs-btn');
+const logIn = document.querySelector('.logged-in-as');
+const searchRecipes = document.querySelector('#searchInput');
+const searchUserRecipesBtn = document.querySelector('#user-recipe-search-button');
+const savedRecipesView = document.querySelector('.saved-recipes');
+const searchRecipesBtn = document.querySelector('#quick-search-button');
+const homeViewBtn = document.querySelector('.home-btn');
+const homeView = document.querySelector('#home-page');
+const savedRecipes = document.querySelector('.user-recipes-button');
+const savedRecipes2 = document.querySelector('.user-recipes-button2');
+const userSearchDisplay = document.querySelector('.best-selection');
 let recipesToCook = [];
-
 let userList = [];
+
 
 var currentRecipeSelection = recipeData;
 Promise.all([userPromise]).then((values) => { randomUser(values) });
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 
 Promise.all([userPromise]).then((values) => { handleData(values) });
@@ -39,9 +35,9 @@ Promise.all([userPromise]).then((values) => { handleData(values) });
 
 const handleData = (response) => {
   userList = response[0];
-  console.log(currentUser)
+  console.log(currentUser);
   logIn.innerHTML = currentUser.name;
-}
+};
 
 
 const displayRecipes = () => {
@@ -83,16 +79,16 @@ function showFullRecipe() {
   var valForID = this.idVal;
   var toggleTemp = document.querySelector(`#foodName${valForID}`);
   toggleTemp.classList.toggle("hidden");
-  toggleTemp = document.querySelector(`#saveRecipe${valForID}`)
+  toggleTemp = document.querySelector(`#saveRecipe${valForID}`);
   toggleTemp.classList.toggle("hidden");
 
-  toggleTemp = document.querySelector(`#foodPrice${valForID}`)
+  toggleTemp = document.querySelector(`#foodPrice${valForID}`);
   toggleTemp.classList.toggle("hidden");
 
-  toggleTemp = document.querySelector(`#ingredients${valForID}`)
+  toggleTemp = document.querySelector(`#ingredients${valForID}`);
   toggleTemp.classList.toggle("hidden");
 
-  toggleTemp = document.querySelector(`#instructions${valForID}`)
+  toggleTemp = document.querySelector(`#instructions${valForID}`);
   toggleTemp.classList.toggle("hidden");
 
 
@@ -109,8 +105,7 @@ function saveRecipe() {
   else {
     currentUser.recipesToCook.push(recipeToSave);
   }
-
-}
+};
 
 allRecipesButton.addEventListener('click', allRecipesVis);
 function allRecipesVis() {
@@ -130,9 +125,8 @@ function allowToggle() {
     arrayOfRecipeButtons[i] = document.querySelector(`#saveRecipe${currentRecipeSelection[i].id}`);
     arrayOfRecipeButtons[i].idVal = currentRecipeSelection[i].id;
     arrayOfRecipeButtons[i].addEventListener('click', saveRecipe);
-
   }
-}
+};
 
 // As a user, I should be able to search recipes by their name. (Extension option: by name or ingredients)
 const userInput = () => {
@@ -152,7 +146,7 @@ function findByTag(tagInput) {
 function recipesToCookFindByTag(tagInput) {
   currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.tags.includes(tagInput)))
   displayRecipes();
-}
+};
 
 const tagInitialize = () => {
   // add an event listener to each tag button to search
@@ -211,7 +205,7 @@ const recipesToCookFindByName = () => {
   const input = document.getElementById('savedRecipeInput').value
   currentRecipeSelection = findRecipeName(recipeData, input)
   displayRecipes();
-}
+};
 
 savedRecipes.addEventListener('click', savedRecipesPage)
 savedRecipes2.addEventListener('click', savedRecipesPage)
@@ -222,21 +216,19 @@ const addToSavedRecipe = (recipe) => {
   if (!recipesToCook.includes(recipe)) {
     recipesToCook.push(recipe)
   }
-}
-
-//HOME button
+};
 
 
 const homePageView = () => {
   savedRecipesView.innerHTML = null;
   recipeDisplaySection.innerHTML = null;
-}
+};
 homeViewBtn.addEventListener('click', homePageView)
 
 //To display a dollar
 const centsToDollarAmount = (cents) => {
   return cents / 100
-}
+};
 
 export {
   displayRecipes,
@@ -244,4 +236,4 @@ export {
   savedRecipesPage,
   addToSavedRecipe,
   homePageView
-}
+};

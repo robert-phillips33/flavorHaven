@@ -16,7 +16,7 @@ export const findRecipeIngredients = (recipeName) => {
       listOfFoods.push(currentIngredient.name);
   }
   return listOfFoods;
-}
+};
 
 export const findRecipeTag = (recipeList, tag) => {
 
@@ -24,19 +24,19 @@ export const findRecipeTag = (recipeList, tag) => {
     return recipes.tags.includes(tag)
   });
   let newRecipeTag = recipeTag.map((food) => {
-    return food.name
+    return food.name;
   });
-  return newRecipeTag
+  return newRecipeTag;
 };
 
 
 export const findRecipeName = (recipeList, searchString) => {
   let recipes = recipeList.filter((recipe) => {
     if (recipe.name.toLowerCase().includes(searchString.toLowerCase())) {
-      return true
+      return true;
     }
   });
-  return recipes
+  return recipes;
 };
 
 
@@ -49,17 +49,17 @@ export const findRecipePrice = (recipe) => {
     return accumulatorVal + priceForThisIngredient
   }, 0)
   return totalValue
-}
+};
 
 export const findRecipeInstructions = (recipe, recipeName) => {
 
   let userRecipe = recipe.find((recipes) => {
-    return recipes.name === recipeName
+    return recipes.name === recipeName;
   })
-  return userRecipe.instructions
+  return userRecipe.instructions;
 };
 
 export{
   recipeData,
   ingredientList,
-}
+};
