@@ -13,16 +13,16 @@ const randomUser = (response) => {
     userList = response[0];
     currentUser = userList.users[getRandomIndex(userList.users)];
     console.log(currentUser.name)
-}
+};
 const getRandomIndex = (array) => {
     return Math.floor(Math.random() * array.length);
-}
+};
 const handleIngredients = (response) => {
     ingredientList = response[0].ingredients;
-}
+};
 const handleRecipes = (response) => {
     recipeData = response[0].recipes;
-}
+};
 
 
 
@@ -36,4 +36,4 @@ export {
     randomUser,
     currentUser,
     ingredientList,
-}
+};
