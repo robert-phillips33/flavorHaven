@@ -179,22 +179,26 @@ const savedRecipesPage = () => {
 
     savedRecipesView.innerHTML += `
     <article class="single-food">
-      <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
-            <img class='food-image' id = 'foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}'>
-            <h2 class='food-name hidden' id = 'foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
-            <button class='save-recipe hidden' id = 'saveRecipe${currentRecipeSelection[i].id}'>Unsave This Recipe!</button>
-            <h3 class='total-price hidden' id = 'foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i])).toFixed(2)} </h3>
-        <div class="food-ingredient">
-          <h3 class='ingredients hidden' id = 'ingredients${currentRecipeSelection[i].id}'> ${findRecipeIngredients(currentRecipeSelection[i].name)}</h3>
-        </div>
-        <div class="food-instructions">
-          <h3 class='instructions hidden' id = 'instructions${currentRecipeSelection[i].id}'> ${instructionText}</h3>
-        </div>
-        <div class="food-tags">
-          <h4 class='tags hidden'>${currentRecipeSelection[i].tags} </h4>
-        </div>
-      </section>
-    </article>
+  <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
+    <div class="food-image-container">
+      <img class='food-image' id='foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}' alt='${currentRecipeSelection[i].name}'>
+    </div>
+    <div class="food-details">
+      <h2 class='food-name hidden' id='foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
+      <button class='save-recipe hidden' id='saveRecipe${currentRecipeSelection[i].id}'>Unsave This Recipe!</button>
+      <h3 class='total-price hidden' id='foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i])).toFixed(2)}</h3>
+    </div>
+    <div class="food-ingredient">
+      <h3 class='ingredients hidden' id='ingredients${currentRecipeSelection[i].id}'>${findRecipeIngredients(currentRecipeSelection[i].name)}</h3>
+    </div>
+    <div class="food-instructions">
+      <h3 class='instructions hidden' id='instructions${currentRecipeSelection[i].id}'>${instructionText}</h3>
+    </div>
+    <div class="food-tags">
+      <h4 class='tags hidden'>${currentRecipeSelection[i].tags}</h4>
+    </div>
+  </section>
+</article>
     `;
   }
   allowToggle();
