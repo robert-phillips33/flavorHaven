@@ -20,6 +20,8 @@ const savedRecipes2 = document.querySelector('.user-recipes-button2');
 const userSearchDisplay = document.querySelector('.best-selection');
 const emailSignUp = document.querySelector('#email-input')
 const emailSignUpBtn = document.querySelector('#email-button')
+
+
 let recipesToCook = [];
 let userList = [];
 
