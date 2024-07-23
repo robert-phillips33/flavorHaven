@@ -2,6 +2,7 @@ import { expect } from 'chai';
 // const chai = require('chai');
 // const expect = chai.expect;
 import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, findRecipeInstructions } from '../src/recipes.js';
+// import { userInput } from './src/domUpdates.js';
 // import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes,  recipesPromise } from '../src/apiCalls.js';
 // import recipeData from '../src/data/recipes.js';
 import ingredientsData from '../src/data/ingredients.js';
@@ -11,6 +12,7 @@ describe('findRecipeIngredients', () => {
   it('Should be a function', () => {
     expect(findRecipeIngredients).to.be.a('function');
   });
+
   it('should get list of names', () => {
     const myRecipeIngredient = findRecipeIngredients(newRecipeData[1].name);
     expect(myRecipeIngredient).to.deep.equal([
@@ -27,6 +29,13 @@ describe('findRecipeIngredients', () => {
       'soy sauce',
       'sriracha sauce'])
   });
+
+  // it.skip('should return an alert if no recipe exists', () => {
+  //   const tryToFindARecipe = findRecipeIngredients(newRecipeData[5].name);
+  //   const noRecipeFound = userInput();
+
+  //   expect(noRecipeFound).to.equal('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)');
+  // });
 })
 
 describe('findRecipeTag', () => {
@@ -36,15 +45,16 @@ describe('findRecipeTag', () => {
 
   it('Should return a filtered list of recipes based on a tag', () => {
     const recipeTag = findRecipeTag(newRecipeData, 'sauce')
+
     expect(recipeTag).to.deep.equal(['Dirty Steve\'s Original Wing Sauce'])
   });
 });
-
 
 describe('findRecipeName', () => {
   it('Should be a function', () => {
     expect(findRecipeName).to.be.a('function');
   });
+
   it('should get a matching name', () => {
     const recipeName = findRecipeName(newRecipeData, 'Chocolate');
     expect(recipeName[0].name).to.equal('Loaded Chocolate Chip Pudding Cookie Cups')

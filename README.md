@@ -58,6 +58,7 @@
 - Wins
   - We communicated effectively early on to set a side a schedule to work on this project.
   - We discussed ideas and other perspectives before moving on to the next task.
+  - We learned how to create a table in our HTML file as a team.
 
 - Challenges
   - We had a problem importing images early on the project. We thought it would be adding the image in a file and writing the path in the source in the HTML file. But we learned we had to import it in the script JS file to display the image on the page. 
