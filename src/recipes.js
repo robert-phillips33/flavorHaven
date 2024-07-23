@@ -6,6 +6,7 @@ Promise.all([ingredientsPromise]).then((values) => { handleIngredients(values) }
 Promise.all([recipesPromise]).then((values) => { handleRecipes(values) });
 let recipe = [];
 
+
 export const findRecipeIngredients = (recipeName) => {
 
   recipe = recipeData.find((matchingName) => recipeName === matchingName.name);
@@ -18,10 +19,11 @@ export const findRecipeIngredients = (recipeName) => {
   return listOfFoods;
 };
 
+
 export const findRecipeTag = (recipeList, tag) => {
 
   let recipeTag = recipeList.filter((recipes) => {
-    return recipes.tags.includes(tag)
+    return recipes.tags.includes(tag);
   });
   let newRecipeTag = recipeTag.map((food) => {
     return food.name;
@@ -51,6 +53,7 @@ export const findRecipePrice = (recipe) => {
   return totalValue
 };
 
+
 export const findRecipeInstructions = (recipe, recipeName) => {
 
   let userRecipe = recipe.find((recipes) => {
@@ -58,6 +61,7 @@ export const findRecipeInstructions = (recipe, recipeName) => {
   })
   return userRecipe.instructions;
 };
+
 
 export{
   recipeData,
