@@ -706,7 +706,7 @@ const newRecipeData = [
         "tags": [
             "side dish"
         ]
-    }
+    },
 ]
 
 export default newRecipeData
