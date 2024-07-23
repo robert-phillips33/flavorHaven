@@ -215,10 +215,7 @@ opacity: 0;}
   display: flex;
   flex-direction: column;
 }
-.saved-recipes{
-  background-color:rgb(251, 235, 203);
 
-}
 
 /*
 ****************************************************
@@ -308,12 +305,8 @@ opacity: 0;}
 
 .single-food {
   display: grid;
-  grid-template-areas: 
-      "name name"
-      "ingredients instructions"
-      "tags instructions";
   gap: 20px;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -451,21 +444,16 @@ opacity: 0;}
   background-color: #e9fceb;
 }
 
-.single-food {
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: rgb(251, 227, 181);
-  border: 1px solid #ddd;
-}
 
 .click-box {
   display: flex;
   align-items: center;
+  padding: 20px;
 }
 
 .food-image-container {
-  width: 200px; 
-  margin-right: 20px;
+  width: 400px; 
+  
 }
 
 .food-image {
@@ -475,7 +463,7 @@ opacity: 0;}
 }
 
 .food-details {
-  flex: 1;
+  display: contents;
 }
 
 .food-name {
@@ -523,6 +511,60 @@ opacity: 0;}
 } */
 
 
+
+
+
+.single-food {
+  margin-bottom: 20px; 
+  border: 5px solid white; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: rgb(251, 227, 181);
+  border: 1px solid #ddd;
+  
+
+}
+
+
+.food-image {
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border: 5px solid white
+}
+
+
+.card-body {
+  padding: 15px;
+  display: contents;
+}
+
+
+.card-title {
+  font-size: 1.25rem; 
+  font-weight: bold; 
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+
+.save-recipe {
+  margin-bottom: 10px;
+}
+
+
+.card-text {
+  margin-bottom: 10px;
+  line-height: 1.4; 
+}
+
+
+.tags {
+  font-style: italic; 
+  color: #666; 
+}
 
 
 

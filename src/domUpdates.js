@@ -29,6 +29,7 @@ const bestSelectionNameTwo = document.querySelector('.best-select-name-2')
 const bestSelectionNameThree = document.querySelector('.best-select-name-3')
 const bestSelectionNameFour = document.querySelector('.best-select-name-4')
 const aboutUsView = document.querySelector('.about-us')
+
 let recipesToCook = [];
 let userList = [];
 
@@ -61,25 +62,21 @@ const displayRecipes = () => {
     currentRecipeSelection[i].instructions.forEach((instructionData) => instructionText.push(`<br>` + instructionData.number + ' ' + instructionData.instruction));
 
     recipeDisplaySection.innerHTML += `
-    <article class="single-food">
-      <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
-            <h2 class='food-name' id = 'foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
-            <img class='food-image' id = 'foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}'>
-            <button class='save-recipe hidden' id = 'saveRecipe${currentRecipeSelection[i].id}'>Save This Recipe!</button>
 
-            <h3 class='total-price hidden' id = 'foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i])).toFixed(2)} </h3>
-        <div class="food-ingredient">
-          <h3 class='ingredients hidden' id = 'ingredients${currentRecipeSelection[i].id}'> ${findRecipeIngredients(currentRecipeSelection[i].name)}</h3>
+    <section class="card mb-2 single-food">
+        <div class="click-box" id='ID${currentRecipeSelection[i].id}'>
+          <img class='card-img-top food-image' id='foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}' alt='Food Image'>
+          <div class="card-body">
+            <h5 class='card-title food-name' id='foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h5>
+            <button class='btn btn-primary save-recipe hidden' id='saveRecipe${currentRecipeSelection[i].id}'>Save This Recipe!</button>
+            <p class='card-text total-price hidden' id='foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i])).toFixed(2)}</p>
+            <p class='card-text ingredients hidden' id='ingredients${currentRecipeSelection[i].id}'>${findRecipeIngredients(currentRecipeSelection[i].name)}</p>
+            <p class='card-text instructions hidden' id='instructions${currentRecipeSelection[i].id}'>${instructionText}</p>
+            <p class='card-text tags hidden'>${currentRecipeSelection[i].tags}</p>
+          </div>
         </div>
-        <div class="food-instructions">
-          <h3 class='instructions hidden' id = 'instructions${currentRecipeSelection[i].id}'> ${instructionText}</h3>
-        </div>
-        <div class="food-tags">
-          <h4 class='tags hidden'>${currentRecipeSelection[i].tags} </h4>
-        </div>
-      </section>
-    </article>
-    `;
+    </section>
+`;
   }
   allowToggle();
 };
@@ -88,9 +85,8 @@ const displayRecipes = () => {
 
 function showFullRecipe() {
   var valForID = this.idVal;
-  var toggleTemp = document.querySelector(`#foodName${valForID}`);
-  toggleTemp.classList.toggle("hidden");
-  toggleTemp = document.querySelector(`#saveRecipe${valForID}`);
+  
+  var toggleTemp = toggleTemp = document.querySelector(`#saveRecipe${valForID}`);
   toggleTemp.classList.toggle("hidden");
 
   toggleTemp = document.querySelector(`#foodPrice${valForID}`);
@@ -145,6 +141,7 @@ const userInput = () => {
   if(currentRecipeSelection.length === 0) {    
     alert('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)') // findRecipeName creates an array that returns a recipe name if its true ->                                                               // if the array is 0 meaning the recipe is not there, the alert pops up telling -
   }                                                            // the user no recipes matching your search
+
   displayRecipes();
 };
 
@@ -191,27 +188,27 @@ const savedRecipesPage = () => {
     currentRecipeSelection[i].instructions.forEach((instructionData) => instructionText.push(`<br>` + instructionData.number + ' ' + instructionData.instruction));
     
     savedRecipesView.innerHTML += `
-    <article class="single-food">
-  <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
-    <div class="food-image-container">
-      <img class='food-image' id='foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}' alt='${currentRecipeSelection[i].name}'>
-    </div>
-    <div class="food-details">
-      <h2 class='food-name hidden' id='foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
-      <button class='save-recipe hidden' id='saveRecipe${currentRecipeSelection[i].id}'>Unsave This Recipe!</button>
-      <h3 class='total-price hidden' id='foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i])).toFixed(2)}</h3>
-    </div>
-    <div class="food-ingredient">
-      <h3 class='ingredients hidden' id='ingredients${currentRecipeSelection[i].id}'>${findRecipeIngredients(currentRecipeSelection[i].name)}</h3>
-    </div>
-    <div class="food-instructions">
-      <h3 class='instructions hidden' id='instructions${currentRecipeSelection[i].id}'>${instructionText}</h3>
-    </div>
-    <div class="food-tags">
-      <h4 class='tags hidden'>${currentRecipeSelection[i].tags}</h4>
-    </div>
+  <section class="single-food">
+    <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
+      <div class="food-image-container">
+        <img class='food-image' id='foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}' alt='${currentRecipeSelection[i].name}'>
+      </div>
+      <div class="food-details">
+        <h2 class='food-name' id='foodName${currentRecipeSelection[i].id}'>${currentRecipeSelection[i].name}</h2>
+        <button class='save-recipe hidden' id='saveRecipe${currentRecipeSelection[i].id}'>Unsave This Recipe!</button>
+        <h3 class='total-price hidden' id='foodPrice${currentRecipeSelection[i].id}'>Total price $: ${centsToDollarAmount(findRecipePrice(currentRecipeSelection[i])).toFixed(2)}</h3>
+      </div>
+      <div class="food-ingredient">
+        <h3 class='ingredients hidden' id='ingredients${currentRecipeSelection[i].id}'>${findRecipeIngredients(currentRecipeSelection[i].name)}</h3>
+      </div>
+      <div class="food-instructions">
+        <h3 class='instructions hidden' id='instructions${currentRecipeSelection[i].id}'>${instructionText}</h3>
+      </div>
+      <div class="food-tags">
+        <h4 class='tags hidden'>${currentRecipeSelection[i].tags}</h4>
+      </div>
+    </section>
   </section>
-</article>
     `;
     
     
