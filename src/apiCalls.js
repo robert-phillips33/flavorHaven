@@ -36,11 +36,11 @@ function getUsers() {
       .then(data => console.log(data));
     console.log('it clicked');
   }
-function postTestUser(currentUser) {
+function postTestUser() {
     fetch('http://localhost:3001/api/v1/users', {
         method: 'POST',
         body: JSON.stringify({
-            id: c,
+            id: 999999,
             name: 'Z',
             recipesToCook: []
         }),
@@ -53,7 +53,22 @@ function postTestUser(currentUser) {
         .catch(err => console.log('ERROR: ', err));
         console.log("postTestUser executed");
 };
-
+function postTestUser2(currentUser) {
+    fetch('http://localhost:3001/api/v1/users', {
+        method: 'POST',
+        body: JSON.stringify({
+            userID: currentUser.id,
+            recipeID: currentUser.recipesToCook,
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(err => console.log('ERROR: ', err));
+        console.log("postTestUser executed");
+};
 // fetch('http://localhost:3001/api/v1/users', {
 //     method: 'POST',
 //     body: JSON.stringify({
@@ -85,6 +100,7 @@ export {
     ingredientList,
     randomRecipe,
     postTestUser,
+    postTestUser2,
     getUsers,
 
 };

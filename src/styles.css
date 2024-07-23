@@ -371,10 +371,6 @@ opacity: 0;}
   margin-top: 10px;
 }
 
-.footer .logo {
-  flex: 1;
-}
-
 .footer .logo img {
   max-width: 100px;
   border-radius: 50px;

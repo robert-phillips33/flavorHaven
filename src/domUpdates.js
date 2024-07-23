@@ -193,7 +193,7 @@ const savedRecipesPage = () => {
     var instructionText = [];
 
     currentRecipeSelection[i].instructions.forEach((instructionData) => instructionText.push(`<br>` + instructionData.number + ' ' + instructionData.instruction));
-    
+
     savedRecipesView.innerHTML += `
   <section class="single-food">
     <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
@@ -217,9 +217,7 @@ const savedRecipesPage = () => {
     </section>
   </section>
     `;
-    
-    
-  }
+  };
   allowToggle();
 };
 
