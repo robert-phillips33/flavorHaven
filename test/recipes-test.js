@@ -30,12 +30,12 @@ describe('findRecipeIngredients', () => {
       'sriracha sauce'])
   });
 
-  // it.skip('should return an alert if no recipe exists', () => {
-  //   const tryToFindARecipe = findRecipeIngredients(newRecipeData[5].name);
-  //   const noRecipeFound = userInput();
+  it.skip('should return an alert if no recipe exists', () => {
+    const tryToFindARecipe = findRecipeIngredients(newRecipeData[5].name);
+    const noRecipeFound = userInput();
 
-  //   expect(noRecipeFound).to.equal('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)');
-  // });
+    expect(noRecipeFound).to.equal('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)');
+  });
 })
 
 describe('findRecipeTag', () => {

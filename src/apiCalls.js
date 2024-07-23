@@ -14,6 +14,12 @@ const randomUser = (response) => {
     currentUser = userList.users[getRandomIndex(userList.users)];
     console.log(currentUser.name)
 };
+
+const randomRecipe = (response) => {
+    recipesChosen = response[0];
+    currentRecipe = recipeData.recipesChosen[getRandomIndex(recipeData.recipesChosen)];
+    console.log(currentRecipe.name)
+};
 const getRandomIndex = (array) => {
     return Math.floor(Math.random() * array.length);
 };
@@ -23,6 +29,47 @@ const handleIngredients = (response) => {
 const handleRecipes = (response) => {
     recipeData = response[0].recipes;
 };
+
+function getUsers() {
+    fetch('http://localhost:3001/api/v1/users')
+      .then(response => response.json())
+      .then(data => console.log(data));
+    console.log('it clicked');
+  }
+function postTestUser(currentUser) {
+    fetch('http://localhost:3001/api/v1/users', {
+        method: 'POST',
+        body: JSON.stringify({
+            id: c,
+            name: 'Z',
+            recipesToCook: []
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(err => console.log('ERROR: ', err));
+        console.log("postTestUser executed");
+};
+
+// fetch('http://localhost:3001/api/v1/users', {
+//     method: 'POST',
+//     body: JSON.stringify({
+//         id: 999999,
+//         name: 'Z',
+//         recipesToCook: []
+//     }),
+//     headers: {
+//         'Content-Type': 'application/json'
+//     }
+// })
+//     .then(response => response.json())
+//     .then(json => console.log(json))
+//     .catch(err => console.log('ERROR: ', err));
+
+postTestUser();
 
 
 
@@ -36,4 +83,8 @@ export {
     randomUser,
     currentUser,
     ingredientList,
+    randomRecipe,
+    postTestUser,
+    getUsers,
+
 };

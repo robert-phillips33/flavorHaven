@@ -1,5 +1,5 @@
 
-import { userPromise, currentUser, randomUser, recipesPromise, ingredientsPromise } from './apiCalls.js';
+import { userPromise, currentUser, randomUser, getUsers, recipesPromise, ingredientsPromise, postTestUser } from './apiCalls.js';
 import { findRecipeIngredients, recipeData, ingredientList, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
 
@@ -29,10 +29,16 @@ const bestSelectionNameTwo = document.querySelector('.best-select-name-2')
 const bestSelectionNameThree = document.querySelector('.best-select-name-3')
 const bestSelectionNameFour = document.querySelector('.best-select-name-4')
 const aboutUsView = document.querySelector('.about-us')
+var addItemButton = document.querySelector('.aboutUs-btn');
+var addItemButton2 = document.querySelector('.aboutUs-btn2');
+// var addItemButton3 = document.querySelector('.aboutUs-btn3');
 
 let recipesToCook = [];
 let userList = [];
 
+addItemButton.addEventListener('click', postTestUser);
+addItemButton2.addEventListener('click', getUsers);
+// addItemButton.addEventListener('click', postTestUser);
 
 var currentRecipeSelection = recipeData;
 Promise.all([userPromise]).then((values) => { randomUser(values) });
@@ -50,6 +56,7 @@ const handleData = (response) => {
   console.log(currentUser);
   logIn.innerHTML = currentUser.name;
 };
+
 
 
 const displayRecipes = () => {
