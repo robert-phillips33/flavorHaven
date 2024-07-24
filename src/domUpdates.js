@@ -1,5 +1,5 @@
 
-import { userPromise, currentUser, randomUser, getUsers, recipesPromise, ingredientsPromise, postTestUser } from './apiCalls.js';
+import { userPromise, currentUser, randomUser, recipesPromise, ingredientsPromise, getUsers, postTestUser } from './apiCalls.js';
 import { findRecipeIngredients, recipeData, ingredientList, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
 
@@ -36,7 +36,7 @@ var addItemButton2 = document.querySelector('.aboutUs-btn2');
 let recipesToCook = [];
 let userList = [];
 
-addItemButton.addEventListener('click', postTestUser);
+// addItemButton.addEventListener('click', postTestUser);
 addItemButton2.addEventListener('click', getUsers);
 // addItemButton.addEventListener('click', postTestUser);
 
