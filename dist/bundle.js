@@ -1782,7 +1782,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const findRecipeIngredients = recipe => {
+const findRecipeIngredients = (recipe) => {
   var ingredientList = [];
   for (var i=0; i < recipe.ingredients.length; i++){
     var currentIngredient = _data_ingredients_js__WEBPACK_IMPORTED_MODULE_0__["default"].find((ingredient) => ingredient.id === recipe.ingredients[i].id);
@@ -7382,10 +7382,6 @@ __webpack_require__.r(__webpack_exports__);
 // Below are examples of how you can import functions from either the recipes or domUpdates files.
 
 
-
-console.log(_data_ingredients__WEBPACK_IMPORTED_MODULE_3__["default"])
-;(0,_recipes__WEBPACK_IMPORTED_MODULE_4__.findRecipeIngredients)("Dirty Steve's Original Wing Sauce")
-;(0,_domUpdates__WEBPACK_IMPORTED_MODULE_5__.displayRecipes)();
 })();
 
 /******/ })()
