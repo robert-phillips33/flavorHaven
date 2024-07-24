@@ -1,20 +1,16 @@
 {
-  "name": "whats-cookin-api",
+  "name": "whats-cookin",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "Starter kit for Turing FE2 paired project",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack serve",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mochapack 'test/**/*.js'"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1"
-    
-  },  "devDependencies": {
+  "author": "Turing School of Software and Design",
+  "license": "MIT",
+  "devDependencies": {
     "chai": "^4.3.4",
     "css-loader": "^5.2.6",
     "file-loader": "^6.2.0",
@@ -27,6 +23,4 @@
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   }
-
-  
 }
