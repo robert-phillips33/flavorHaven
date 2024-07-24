@@ -1,5 +1,5 @@
 
-import { userPromise, currentUser, userList, ingredientList, randomUser, recipeData, recipesPromise, ingredientsPromise, getUsers, postTestUser, postTestUserRecipe } from './apiCalls.js';
+import { userPromise, currentUser, userList, ingredientList, randomUser, recipeData, recipesPromise, ingredientsPromise, getUsers, postTestUser, postRecipeToUser } from './apiCalls.js';
 import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
 
@@ -121,6 +121,7 @@ function saveRecipe() {
   else {
     currentUser.recipesToCook.push(recipeToSave);
   }
+  postRecipeToUser(currentUser, recipeToSave); // from api calls to save recipe to user.
 };
 
 allRecipesButton.addEventListener('click', allRecipesVis);

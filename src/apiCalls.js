@@ -12,19 +12,19 @@ const randomUser = (response) => {
     userList = response[0];
     currentUser = userList.users[getRandomIndex(userList.users)];
     console.log(currentUser.name)
-    fetch('http://localhost:3001/api/v1/usersRecipes', {
-        method: 'POST',
-        body: JSON.stringify({
-            userID: currentUser.id,
-            recipeID: 595736
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.log('ERROR: ', err));
+    // fetch('http://localhost:3001/api/v1/usersRecipes', {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //         userID: currentUser.id,
+    //         recipeID: 595736
+    //     }),
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch(err => console.log('ERROR: ', err));
 
 };
 
@@ -52,7 +52,8 @@ function getUsers() {
     console.log('it clicked');
 
 }
-function postTestUser() {
+
+function postTestUser() { // Still need?
     fetch('http://localhost:3001/api/data/users', {
         method: 'POST',
         body: JSON.stringify({
@@ -102,13 +103,13 @@ function postTestUser() {
 //     .catch(err => console.log('ERROR: ', err));
 
 // postTestUser();
-function postTestUserRecipe() {
+function postRecipeToUser(user, recipeChoice) { // renamed from Z's test stuff.
     
     fetch('http://localhost:3001/api/v1/usersRecipes', {
         method: 'POST',
         body: JSON.stringify({
-            userID: 1,
-            recipeID: 595736
+            userID: user.id,
+            recipeID: recipeChoice.id
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -155,5 +156,5 @@ export {
     // postTestUser,
     // postTestUser2,
     getUsers,
-    postTestUserRecipe
+    postRecipeToUser // What we changed to save recipes to api users
 };
