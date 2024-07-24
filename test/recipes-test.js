@@ -2,7 +2,9 @@ import { expect } from 'chai';
 // const chai = require('chai');
 // const expect = chai.expect;
 import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, findRecipeInstructions } from '../src/recipes.js';
+
 import { userInput } from './src/domUpdates.js';
+
 // import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes,  recipesPromise } from '../src/apiCalls.js';
 // import recipeData from '../src/data/recipes.js';
 import ingredientsData from '../src/data/ingredients.js';
@@ -32,12 +34,14 @@ describe('findRecipeIngredients', () => {
       'sriracha sauce'])
   });
 
+
   it.skip('should return an alert if no recipe exists', () => {
     const tryToFindARecipe = findRecipeIngredients(newRecipeData[5].name);
     const noRecipeFound = userInput();
 
     expect(noRecipeFound).to.equal('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)');
   });
+
 })
 
 describe('findRecipeTag', () => {

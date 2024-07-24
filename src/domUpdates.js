@@ -29,9 +29,11 @@ const bestSelectionNameTwo = document.querySelector('.best-select-name-2')
 const bestSelectionNameThree = document.querySelector('.best-select-name-3')
 const bestSelectionNameFour = document.querySelector('.best-select-name-4')
 const aboutUsView = document.querySelector('.about-us')
+
 var addItemButton = document.querySelector('.aboutUs-btn');
 var addItemButton2 = document.querySelector('.aboutUs-btn2');
 // var addItemButton3 = document.querySelector('.aboutUs-btn3');
+
 
 let recipesToCook = [];
 
@@ -69,6 +71,7 @@ const displayRecipes = () => {
 
     recipeDisplaySection.innerHTML += `
 
+
     <section class="card mb-2 single-food">
         <div class="click-box" id='ID${currentRecipeSelection[i].id}'>
           <img class='card-img-top food-image' id='foodImage${currentRecipeSelection[i].id}' src='${currentRecipeSelection[i].image}' alt='Food Image'>
@@ -80,6 +83,7 @@ const displayRecipes = () => {
             <p class='card-text instructions hidden' id='instructions${currentRecipeSelection[i].id}'>${instructionText}</p>
             <p class='card-text tags hidden'>${currentRecipeSelection[i].tags}</p>
           </div>
+
         </div>
     </section>
 `;
@@ -192,7 +196,7 @@ const savedRecipesPage = () => {
     var instructionText = [];
 
     currentRecipeSelection[i].instructions.forEach((instructionData) => instructionText.push(`<br>` + instructionData.number + ' ' + instructionData.instruction));
-
+    
     savedRecipesView.innerHTML += `
   <section class="single-food">
     <section class="click-box" id='ID${currentRecipeSelection[i].id}'>
@@ -216,7 +220,9 @@ const savedRecipesPage = () => {
     </section>
   </section>
     `;
+
   };
+
   allowToggle();
 };
 
@@ -292,24 +298,20 @@ const bestSelectionsFour = () => {
 }
 bestSelectionFourBtn.addEventListener('click', bestSelectionsFour)
 
-// const showAboutUs = () => {
-//   aboutUsView.classList.remove('hidden')
-//   userSearchDisplay.innerHTML = aboutUsView.innerHTML
-// }
 
-// aboutUs.addEventListener('click', showAboutUs)
 
 export {
   displayRecipes,
   userInput,
   savedRecipesPage,
   addToSavedRecipe,
-  // homePageView,
+
   userSignUp,
   bestSelectionsOne,
   bestSelectionsTwo,
   bestSelectionsThree,
   bestSelectionsFour,
+
   saveRecipe
-  // showAboutUs
+
 };
