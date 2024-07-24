@@ -1,6 +1,6 @@
 
-import { userPromise, currentUser, randomUser, recipesPromise, ingredientsPromise, getUsers, postTestUser } from './apiCalls.js';
-import { findRecipeIngredients, recipeData, ingredientList, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
+import { userPromise, currentUser, userList, ingredientList, randomUser, recipeData, recipesPromise, ingredientsPromise, getUsers, postTestUser, postTestUserRecipe } from './apiCalls.js';
+import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
 import { result } from 'lodash';
 
 // const allRecipesButton = document.querySelector('.all-recipes-button');
@@ -13,8 +13,8 @@ const searchRecipes = document.querySelector('#searchInput');
 const searchUserRecipesBtn = document.querySelector('#user-recipe-search-button');
 const savedRecipesView = document.querySelector('.saved-recipes');
 const searchRecipesBtn = document.querySelector('#quick-search-button');
-const homeViewBtn = document.querySelector('.home-btn');
-const homeView = document.querySelector('#home-page');
+// const homeViewBtn = document.querySelector('.home-btn');
+// const homeView = document.querySelector('#home-page');
 const savedRecipes = document.querySelector('.user-recipes-button');
 const savedRecipes2 = document.querySelector('.user-recipes-button2');
 const userSearchDisplay = document.querySelector('.best-selection');
@@ -34,7 +34,6 @@ var addItemButton2 = document.querySelector('.aboutUs-btn2');
 // var addItemButton3 = document.querySelector('.aboutUs-btn3');
 
 let recipesToCook = [];
-let userList = [];
 
 // addItemButton.addEventListener('click', postTestUser);
 addItemButton2.addEventListener('click', getUsers);
@@ -52,7 +51,7 @@ Promise.all([userPromise]).then((values) => { handleData(values) });
 
 
 const handleData = (response) => {
-  userList = response[0];
+  // userList = response[0];
   console.log(currentUser);
   logIn.innerHTML = currentUser.name;
 };
@@ -240,11 +239,11 @@ const addToSavedRecipe = (recipe) => {
 };
 
 
-const homePageView = () => {
-  savedRecipesView.innerHTML = null;
-  recipeDisplaySection.innerHTML = null;
-};
-homeViewBtn.addEventListener('click', homePageView)
+// const homePageView = () => {
+//   savedRecipesView.innerHTML = null;
+//   recipeDisplaySection.innerHTML = null;
+// };
+// homeViewBtn.addEventListener('click', homePageView)
 
 //To display a dollar
 const centsToDollarAmount = (cents) => {
@@ -293,23 +292,24 @@ const bestSelectionsFour = () => {
 }
 bestSelectionFourBtn.addEventListener('click', bestSelectionsFour)
 
-const showAboutUs = () => {
-  aboutUsView.classList.remove('hidden')
-  userSearchDisplay.innerHTML = aboutUsView.innerHTML
-}
+// const showAboutUs = () => {
+//   aboutUsView.classList.remove('hidden')
+//   userSearchDisplay.innerHTML = aboutUsView.innerHTML
+// }
 
-aboutUs.addEventListener('click', showAboutUs)
+// aboutUs.addEventListener('click', showAboutUs)
 
 export {
   displayRecipes,
   userInput,
   savedRecipesPage,
   addToSavedRecipe,
-  homePageView,
+  // homePageView,
   userSignUp,
   bestSelectionsOne,
   bestSelectionsTwo,
   bestSelectionsThree,
   bestSelectionsFour,
-  showAboutUs
+  saveRecipe
+  // showAboutUs
 };

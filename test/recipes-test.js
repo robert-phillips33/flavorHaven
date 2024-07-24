@@ -2,11 +2,13 @@ import { expect } from 'chai';
 // const chai = require('chai');
 // const expect = chai.expect;
 import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, findRecipeInstructions } from '../src/recipes.js';
-// import { userInput } from './src/domUpdates.js';
+import { userInput } from './src/domUpdates.js';
 // import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes,  recipesPromise } from '../src/apiCalls.js';
 // import recipeData from '../src/data/recipes.js';
 import ingredientsData from '../src/data/ingredients.js';
 import newRecipeData from '../src/data/recipesSample.js';
+import { recipeData } from '../src/apiCalls.js';
+
 
 describe('findRecipeIngredients', () => {
   it('Should be a function', () => {
