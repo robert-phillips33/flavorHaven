@@ -67,6 +67,10 @@
 - Challenges
   - We had a problem importing images early on the project. We thought it would be adding the image in a file and writing the path in the source in the HTML file. But we learned we had to import it in the script JS file to display the image on the page. 
 
+### Part 2 Specific
+- In the second part of the project, we fetched our API data from a local server. We cloned the local server and ran it in a separate terminal tab while running our recipe page. We used a POST request to save users favorite recipes to the local API. This ensured the users favorite recipes are visible even after refreshing the page. 
+
+- To address accessibility, we used tools like `Lighthouse` and `WAVE` to test and improve accessibility. The tools gave us feedbacks on what needs to be fixed based on a missing `label` or having improper color scheme.
 
 ##
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)

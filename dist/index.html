@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"><!----NEW-->
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!----NEW-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link rel="stylesheet" type="html/css" href="src/styles.css">
   <title>Flavor Haven.</title>
 </head>
@@ -12,22 +12,16 @@
   <header>
     <div class="logo-container">
       <h1>Flavor Haven</h1>
-      <img src="./images/food.png" alt="flavor-Haven-logo-one" class="title-img"><!----NEW-->
+      <img src="./images/food.png" alt="flavor-Haven-logo" class="title-img">
     </div>
     <nav class="nav-list">
       <ul>
-        <!-- <li><button class="home-btn">Home</button></li> -->
-        <!-- <li><button class="aboutUs-btn">About Us</button></li> -->
-        <li><button class="aboutUs-btn2">About Us</button></li>
-        <!-- <li><button class="aboutUs-btn3">About Us</button></li> -->
-        <li>
-          <section class="logged-in-as">put username here</section>
-        </li>
+        <li class="logged-in-as" aria-label="Logged in as">put username here</li>
       </ul>
     </nav>
   </header>
   <div class="dropdown">
-    <button class="all-recipes-button">Recipes</button>
+    <button class="all-recipes-button" aria-haspopup="true" aria-expanded="false">Recipes</button>
     <div class="dropdown-content">
       <table>
         <tr>
@@ -55,7 +49,7 @@
     </div>
   </div>
   <div class="dropdown">
-    <button class="user-recipes-button">
+    <button class="user-recipes-button" aria-haspopup="true" aria-expanded="false">
       Saved Recipes
     </button>
 
@@ -83,7 +77,8 @@
           <td><a href="#" class="recipe-tag" data-tag="snack">Snack</a></td>
         </tr>
         <div class="input-container">
-          <input class="input-bar" id="savedRecipeInput" type="text" placeholder="search your saved recipes here!">
+          <label for="searchInput">Search Recipes:</label> 
+          <input class="input-bar-save" id="savedRecipeInput" type="text" aria-label="Search your saved recipes">
           <button class="search-button" id="user-recipe-search-button">Search</button>
         </div>
       </table>
@@ -91,7 +86,7 @@
   </div>
   <section class="quick-search">
     <div class="input-container">
-      <input class="input-bar" id="searchInput" type="text" placeholder="search for new recipes here!">
+      <input class="input-bar" id="searchInput" type="text" aria-label="Search for new recipes" placeholder="Search your saved recipes">
       <button class="search-button" id="quick-search-button">Search</button>
     </div>
   </section>
@@ -106,52 +101,26 @@
   <section class="best-selection">
     <h2>Best Selection</h2>
     <div class="best-selection-inner">
-      <div class="container-best-select-imgs">
-        <img class="best-select-actual-img" src="https://spoonacular.com/recipeImages/595736-556x370.jpg" alt="Loaded Chocolate Chip Pudding Cookie Cups"><!----NEW-->
-        <h3 class="best-title-1 hidden">Loaded Chocolate Chip Pudding Cookie Cups</h3><!----NEW-->
-        <p class="fact-1 hidden">Loaded Chocolate Chip Pudding Cookie Cups are decadent treats featuring soft, chewy cookie dough baked into
-          cups and filled with rich,
-          creamy pudding, creating an indulgent dessert experience.</p><!----NEW-->
-      </div>
-      <div class="container-best-select-imgs-2"><!----NEW-->
-        <img class="best-select-actual-img" src="https://spoonacular.com/recipeImages/678353-556x370.jpg" alt="Maple Dijon Apple Cider Grilled Pork Chops"><!----NEW-->
-        <h3 class="best-title-2 hidden" >Maple Dijon Apple Cider Grilled Pork Chops</h3><!----NEW-->
-        <p class="fact-2 hidden">These succulent pork chops are marinated in a sweet and tangy blend of maple syrup, Dijon mustard, and apple
-          cider, then grilled to
-          perfection for a deliciously caramelized finish.</p><!----NEW-->
-      </div>
-      <div class="container-best-select-imgs-3"><!----NEW-->
-        <img class="best-select-actual-img" src="https://spoonacular.com/recipeImages/412309-556x370.jpeg" alt="Dirty Steve's Original Wing Sauce"><!----NEW-->
-        <h3 class="best-title-3 hidden">Dirty Steve's Original Wing Sauce</h3><!----NEW-->
-        <p class="fact-3 hidden">This bold and zesty wing sauce combines a unique blend of spices and heat, delivering a rich, tangy flavor
-          that elevates any chicken
-          wing to a new level of deliciousness.</p><!----NEW-->
-      </div>
-      <div class="container-best-select-imgs-4"><!----NEW-->
-        <img class="best-select-actual-img" src="https://spoonacular.com/recipeImages/741603-556x370.jpeg" alt="Elvis Pancakes"><!----NEW-->
-        <h3 class="best-title-4 hidden" >Elvis Pancakes</h3><!----NEW-->
-        <p class="fact-4 hidden">Elvis Pancakes are a decadent breakfast treat featuring fluffy pancakes topped with creamy peanut butter,
-          sliced bananas, and a drizzle
-          of honey, inspired by the King's favorite flavors.</p><!----NEW-->
-      </div>
+    
     </div>
   </section>
   <section class="food-blog">
     <h3>Food Blog</h3>
     <div class="food-blog-container">
       <div class="food-blog-text">
-        <h3>Mexican Vegetables on Cornbread</h3><!----NEW-->
+        <h3>Mexican Vegetables on Cornbread</h3>
         <p>Mexican Vegetables on Cornbread is a flavorful dish that combines vibrant, spiced vegetables like bell
           peppers, corn, and
           black beans with the soft, slightly sweet base of cornbread. Often topped with cheese and fresh cilantro, this
           dish is a
           delightful blend of textures and tastes, perfect for a hearty and satisfying meal.</p>
       </div>
-      <img src="https://spoonacular.com/recipeImages/504218-556x370.jpg" alt="Mexican Vegetables on Cornbread"><!----NEW-->
+      <img src="https://spoonacular.com/recipeImages/504218-556x370.jpg"
+        alt="Mexican Vegetables on Cornbread">
     </div>
     <div class="food-blog-container">
       <div class="food-blog-text">
-        <h3>Baked Stuffed Artichokes</h3><!----NEW-->
+        <h3>Baked Stuffed Artichokes</h3>
         <p>Baked Stuffed Artichokes are a delectable dish where tender artichoke leaves and hearts are filled with a
           savory mixture of breadcrumbs,
           garlic, herbs, and Parmesan cheese. Baked until golden and crispy, this dish offers a delightful combination
@@ -159,29 +128,34 @@
           perfect as an appetizer or a side dish.
         </p>
       </div>
-      <img src="https://img.spoonacular.com/recipes/226562-556x370.jpg" alt="Baked Stuffed Artichokes"><!----NEW-->
+      <img src="https://img.spoonacular.com/recipes/226562-556x370.jpg" alt="Baked Stuffed Artichokes">
     </div>
     <div class="food-blog-container">
       <div class="food-blog-text">
-        <h3>Vegan Lentil Loaf</h3><!----NEW-->
-        <p>Vegan Lentil Loaf is a wholesome, plant-based dish made from a blend of lentils, vegetables, and savory seasonings, 
+        <h3>Vegan Lentil Loaf</h3>
+        <p>Vegan Lentil Loaf is a wholesome, plant-based dish made from a blend of lentils, vegetables, and savory
+          seasonings,
           baked to a perfect, firm texture.
         </p>
       </div>
-      <img src="https://spoonacular.com/recipeImages/724018-556x370.jpg" alt="Vegan Lentil Loaf"><!----NEW-->
+      <img src="https://spoonacular.com/recipeImages/724018-556x370.jpg" alt="Vegan Lentil Loaf">
     </div>
   </section>
   <section class="footer">
     <div class="logo">
-      <img src="./images/flavor-haven.jpg" alt="flavor-Haven-logo-two"><!----NEW-->
+      <img src="./images/flavor-haven.jpg" alt="flavor-Haven-logo-two">
     </div>
     <div class="awards">
+      <label for="email-input">Enter Email:</label> <!-- ----ADDED A LABLE FOR WAVE TEST------->
       <input class="input-bar" id="email-input" type="text" placeholder="Enter email">
       <button class="search-button" id="email-button">Sign Up</button>
       <ul>
         <li>Savory Sensation Honor 2024 🏆</li>
         <li>Delectable Dish Award 2022 🏆</li>
         <li>Flavor Fusion Medal 2020 🏆</li>
+      </ul>
+      <ul>
+        <li>&copy; Copyright 2024, Flavor Haven</li>
       </ul>
     </div>
     <div>
@@ -190,28 +164,6 @@
         <li>Twitter</li>
         <li>Instagram</li>
       </ul>
-    </div>
-  </section>
-  <section class="about-us hidden"><!----NEW-->
-    <div>
-      <h3>Robert</h3>
-      <p>Has a dog named Kevin.</p>
-      <img src="" alt="">
-    </div>
-    <div>
-      <h3>Charles</h3>
-      <p>Getting married soon.</p>
-      <img src="" alt="">
-    </div>
-    <div>
-      <h3>Ryan</h3>
-      <p>Wants to be able to stay underwater for 10, 15 minutes like some people apparently can?</p>
-      <img src="" alt="">
-    </div>
-    <div>
-      <h3>Z</h3>
-      <p>Hates to go to the gym.</p>
-      <img src="" alt="">
     </div>
   </section>
 </body>
