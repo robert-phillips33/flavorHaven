@@ -4,7 +4,7 @@
 
 ## Abstract:
 
-- Flavor Haven is a recipe finder app that is designed to help users discover a wide variety of recipes from a data set. Users can expolre recipes based on name, ingrediets or view all the recipies. Falvor Haven has the option to save the racipes the user likes for later use. The website offers detailed step by step instructions to create one of the recipies. It also offers the total price of the recipe based on the amount of ingrediets needed to make it. Flavor Haven aims to make meal planning and cooking enjoyable and accessible for everyone.
+- Flavor Haven is a recipe look-up application that is designed to help users discover a wide variety of recipes from within a data set. Users can explore recipes based on name, ingredients or view all recipies. Flavor Haven has the option to save the recipes a user likes for later use, where they may also be filtered by the previously mentioned options! Flavor Haven also offers the total price of the recipe based on the amount of ingrediets needed to make it, as well as the instructions to cook the recipe. Flavor Haven aims to make meal planning and cooking enjoyable and accessible for everyone.
 
 ## Installation Instructions:
 
@@ -32,11 +32,11 @@
 
 ## Context:
 
-- At Turing, in the first week of Mod 2, we were assigned to create a recipe website. Our responsibilities included developing the website's functionality by writing tests based on user, recipe, and ingredient criteria. During the testing phase, we created functions to filter recipes by name, tag, and ingredient, as well as to calculate the total cost of ingredients and return instructions for a given recipe.
+- At Turing School of Software and Design, during the first week of Mod 2, we were assigned to create a recipe website. Our responsibilities included developing the website's functionality by writing tests based on user, recipe, and ingredient criteria. During the testing phase, we created functions to filter recipes by name, tag, and ingredient, as well as to calculate the total cost of ingredients and return instructions for a given recipe.
 
 - In the user phase of the assignment, we implemented features that allowed users to filter recipes by tag, name, and ingredient. Users could also add or remove recipes from their saved recipes section and search for saved recipes by name or tag.
 
-- In the final phase of the project, we transitioned from using a hardcoded data file to using a fetch call to receive data. After researching Promise.all(), we successfully gathered data by fetching it with this static method.
+- In the final phase of the project, we transitioned from using a hardcoded data file to using a fetch call to receive data. After researching Promise.all(), we successfully gathered data by fetching it with this static method. From there, we were also able to use POST for the first time in order to ensure our users saved recipe section would persist on reload!
 
 ## Contributors:
 [Ryan](https://github.com/ROlearyPro)
@@ -55,7 +55,7 @@
 
 - Develop a comprehensive testing suite using `Test-Driven Development` (TDD)
 
-- Perform network requests to fetch data. 
+- Perform network requests to fetch and post data. 
 
 
 ### Wins + Challenges 🏆:
@@ -65,7 +65,8 @@
   - We learned how to create a table in our HTML file as a team.
 
 - Challenges
-  - We had a problem importing images early on the project. We thought it would be adding the image in a file and writing the path in the source in the HTML file. But we learned we had to import it in the script JS file to display the image on the page. 
+  - We had a problem importing images early on the project. We thought it would be adding the image in a file and writing the path in the source in the HTML file. But we learned we had to import it in the script JS file to display the image on the page.
+  - Navigating the use of network requests was challenging as it was our first experience working with them. With a good bit of trial and error, we were able to get our network requests working and had a solid few learning moments along the way.
 
 
 ##
