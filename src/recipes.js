@@ -2,8 +2,8 @@
 import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes, recipesPromise } from './apiCalls.js';
 import ingredientsData from './data/ingredients.js';
 import recipeData from './data/recipes.js';
-Promise.all([ingredientsPromise]).then((values) => { handleIngredients(values) });
-Promise.all([recipesPromise]).then((values) => { handleRecipes(values) });
+Promise.all([ingredientsPromise]).then((values) => { handleIngredients(values) }).catch(err => console.log('ERROR: Something went wrong with the Ingredient Data. log: ', err));
+Promise.all([recipesPromise]).then((values) => { handleRecipes(values)}).catch(err => console.log('ERROR: Something went wrong with the Recipe data. log:', err));
 let recipe = [];
 
 
@@ -47,7 +47,7 @@ export const findRecipePrice = (recipe) => {
   var totalValue = recipe.ingredients.reduce((accumulatorVal, currentIngredient) => {
     var foundIngredient = ingredientsData.find(ingredient => ingredient.id === currentIngredient.id)
     var priceForThisIngredient = foundIngredient.estimatedCostInCents * currentIngredient.quantity.amount
-    console.log(`adding ${(priceForThisIngredient / 100).toFixed(2)} for ${currentIngredient.quantity.amount} ${foundIngredient.name}s`)
+    // console.log(`adding ${(priceForThisIngredient / 100).toFixed(2)} for ${currentIngredient.quantity.amount} ${foundIngredient.name}s`)
     return accumulatorVal + priceForThisIngredient
   }, 0)
   return totalValue
