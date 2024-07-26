@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="html/css" href="src/styles.css">
   <title>Flavor Haven.</title>
 </head>
@@ -20,32 +21,34 @@
       </ul>
     </nav>
   </header>
-  <div class="dropdown">
-    <button class="all-recipes-button" aria-haspopup="true" aria-expanded="false">Recipes</button>
-    <div class="dropdown-content">
-      <table>
-        <tr>
-          <th>Meals</th>
-          <th>Sides</th>
-          <th><a href="#" class="allRecipes">All</a></th>
-        </tr>
-        <tr>
-          <td><a href="#" class="tag" data-tag="breakfast">Breakfast</a></td>
-          <td><a href="#" class="tag" data-tag="side dish">Side Dish</a></td>
-        </tr>
-        <tr>
-          <td><a href="#" class="tag" data-tag="lunch">Lunch</a></td>
-          <td><a href="#" class="tag" data-tag="appetizer">Appetizer</a></td>
-        </tr>
-        <tr>
-          <td><a href="#" class="tag" data-tag="dinner">Dinner</a></td>
-          <td><a href="#" class="tag" data-tag="salad">Salad</a></td>
-        </tr>
-        <tr>
-          <td><a href="#" class="tag" data-tag="brunch">Brunch</a></td>
-          <td><a href="#" class="tag" data-tag="snack">Snack</a></td>
-        </tr>
-      </table>
+  <div class="dropdown-container" >
+    <div class="dropdown" role="menuitem" tabindex="0">
+      <button id="dropDownBtn" class="all-recipes-button" role="menuitem" tabindex="0" aria-haspopup="true" aria-expanded="true" >Recipes</button>
+      <div class="dropdown-content" role="menuitem" tabindex="0">
+        <table role="navigation">
+          <tr>
+            <th>Meals</th>
+            <th>Sides</th>
+            <th><a href="#" class="allRecipes" tabindex="0" role="link">All</a></th>
+          </tr>
+          <tr>
+            <td><a href="#" class="tag" data-tag="breakfast" tabindex="0" role="menuitem">Breakfast</a></td>
+            <td><a href="#" class="tag" data-tag="side dish" tabindex="0" role="button">Side Dish</a></td>
+          </tr>
+          <tr>
+            <td><a href="#" class="tag" data-tag="lunch" tabindex="0" role="button">Lunch</a></td>
+            <td><a href="#" class="tag" data-tag="appetizer" tabindex="0" role="button">Appetizer</a></td>
+          </tr>
+          <tr>
+            <td><a href="#" class="tag" data-tag="dinner" tabindex="0" role="button">Dinner</a></td>
+            <td><a href="#" class="tag" data-tag="salad" tabindex="0" role="button">Salad</a></td>
+          </tr>
+          <tr>
+            <td><a href="#" class="tag" data-tag="brunch" tabindex="0" role="button">Brunch</a></td>
+            <td><a href="#" class="tag" data-tag="snack" tabindex="0" role="button">Snack</a></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
   <div class="dropdown">
@@ -58,26 +61,26 @@
         <tr>
           <th>Meals</th>
           <th>Sides</th>
-          <th><a href="#" class="user-recipes-button2">All</a></th>
+          <th><a href="#" class="user-recipes-button2" tabindex="0" role="button">All</a></th>
         </tr>
         <tr>
-          <td><a href="#" class="recipe-tag" data-tag="breakfast">Breakfast</a></td>
-          <td><a href="#" class="recipe-tag" data-tag="side dish">Side Dish</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="breakfast" tabindex="0" role="button">Breakfast</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="side dish" tabindex="0" role="button">Side Dish</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="recipe-tag" data-tag="lunch">Lunch</a></td>
-          <td><a href="#" class="recipe-tag" data-tag="appetizer">Appetizer</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="lunch" tabindex="0" role="button">Lunch</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="appetizer" tabindex="0" role="button">Appetizer</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="recipe-tag" data-tag="dinner">Dinner</a></td>
-          <td><a href="#" class="recipe-tag" data-tag="salad">Salad</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="dinner" tabindex="0" role="button">Dinner</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="salad" tabindex="0" role="button">Salad</a></td>
         </tr>
         <tr>
-          <td><a href="#" class="recipe-tag" data-tag="brunch">Brunch</a></td>
-          <td><a href="#" class="recipe-tag" data-tag="snack">Snack</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="brunch" tabindex="0" role="button">Brunch</a></td>
+          <td><a href="#" class="recipe-tag" data-tag="snack" tabindex="0" role="button">Snack</a></td>
         </tr>
         <div class="input-container">
-          <label for="searchInput">Search Recipes:</label> 
+          <label for="searchInput">Search Recipes:</label>
           <input class="input-bar-save" id="savedRecipeInput" type="text" aria-label="Search your saved recipes">
           <button class="search-button" id="user-recipe-search-button">Search</button>
         </div>
@@ -86,7 +89,8 @@
   </div>
   <section class="quick-search">
     <div class="input-container">
-      <input class="input-bar" id="searchInput" type="text" aria-label="Search for new recipes" placeholder="Search your saved recipes">
+      <input class="input-bar" id="searchInput" type="text" aria-label="Search for new recipes"
+        placeholder="Search your saved recipes">
       <button class="search-button" id="quick-search-button">Search</button>
     </div>
   </section>
@@ -101,7 +105,7 @@
   <section class="best-selection">
     <h2>Best Selection</h2>
     <div class="best-selection-inner">
-    
+
     </div>
   </section>
   <section class="food-blog">
@@ -115,8 +119,7 @@
           dish is a
           delightful blend of textures and tastes, perfect for a hearty and satisfying meal.</p>
       </div>
-      <img src="https://spoonacular.com/recipeImages/504218-556x370.jpg"
-        alt="Mexican Vegetables on Cornbread">
+      <img src="https://spoonacular.com/recipeImages/504218-556x370.jpg" alt="Mexican Vegetables on Cornbread">
     </div>
     <div class="food-blog-container">
       <div class="food-blog-text">
@@ -146,7 +149,7 @@
       <img src="./images/flavor-haven.jpg" alt="flavor-Haven-logo-two">
     </div>
     <div class="awards">
-      <label for="email-input">Enter Email:</label> <!-- ----ADDED A LABLE FOR WAVE TEST------->
+      <label for="email-input">Enter Email:</label>
       <input class="input-bar" id="email-input" type="text" placeholder="Enter email">
       <button class="search-button" id="email-button">Sign Up</button>
       <ul>
@@ -160,9 +163,9 @@
     </div>
     <div>
       <ul class="social-media">
-        <li>Facebook</li>
-        <li>Twitter</li>
-        <li>Instagram</li>
+        <i class="fa fa-facebook-official" style="font-size:24px; color:#1877F2"></i>
+        <i class="fa fa-twitter" style="font-size:24px;color:#1da1f2"></i>
+        <i class="fa fa-instagram" style="font-size:24px;color:#f58529"></i>
       </ul>
     </div>
   </section>

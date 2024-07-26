@@ -2,8 +2,8 @@
 import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes, recipesPromise } from './apiCalls.js';
 import ingredientsData from './data/ingredients.js';
 import recipeData from './data/recipes.js';
-Promise.all([ingredientsPromise]).then((values) => { handleIngredients(values) });
-Promise.all([recipesPromise]).then((values) => { handleRecipes(values) });
+Promise.all([ingredientsPromise]).then((values) => { handleIngredients(values) }).catch(err => console.log('ERROR: Something went wrong with the Ingredient Data. log: ', err));
+Promise.all([recipesPromise]).then((values) => { handleRecipes(values)}).catch(err => console.log('ERROR: Something went wrong with the Recipe data. log:', err));
 let recipe = [];
 
 

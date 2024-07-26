@@ -1,10 +1,13 @@
 // Your fetch requests will live here!
 let currentUser;
 let recipesChosen = [];
-const userPromise = fetch("http://localhost:3001/api/v1/users").then((response) => response.json());
+const userPromise = fetch("http://localhost:3001/api/v1/users").then((response) => response.json()).catch(err => console.log('ERROR: ', err));
+;
 console.log(userPromise);
-const ingredientsPromise = fetch("http://localhost:3001/api/v1/ingredients").then((response) => response.json());
-const recipesPromise = fetch("http://localhost:3001/api/v1/recipes").then((response) => response.json());
+const ingredientsPromise = fetch("http://localhost:3001/api/v1/ingredients").then((response) => response.json()).catch(err => console.log('ERROR: ', err));
+;
+const recipesPromise = fetch("http://localhost:3001/api/v1/recipes").then((response) => response.json()).catch(err => console.log('ERROR: ', err));
+;
 let userList;
 let ingredientList;
 let recipeData;
@@ -13,6 +16,7 @@ let recipeData;
 const randomUser = (response) => {
     userList = response[0];
     currentUser = userList.users[getRandomIndex(userList.users)];
+    currentUser = userList.users[0];
     console.log(currentUser.name)
 
 };
@@ -43,8 +47,7 @@ function getUsers() {
     fetch('http://localhost:3001/api/v1/recipes')
         .then(response => response.json())
         .then(data => console.log(data))
-        .catch(err => console.log('ERROR: ', err));
-    console.log('it clicked');
+        .catch(err => console.log('ERROR: Could not access user data! log:', err));
 
 }
 
@@ -64,14 +67,39 @@ function postRecipeToUser(user, recipeChoice) { // renamed from Z's test stuff.
     })
         .then(response => response.json())
         .then(data => console.log(data))
-        .catch(err => console.log('ERROR: ', err));
+        .catch(err => console.log('ERROR: Could not save to user data; log:', err));
 
     fetch('http://localhost:3001/api/v1/users')
         .then(response => response.json())
-        .then(data => console.log(data));
+        .then(data => console.log(data))
+        .catch(err => console.log('ERROR: Could not show the save to user data; log:', err));
+
     console.log('it posted');
 }
 
+function removeRecipeForUser(user, recipeChoice) { // renamed from Z's test stuff.
+
+    fetch('http://localhost:3001/api/v1/usersRecipes', {
+        method: 'DELETE',
+        body: JSON.stringify({
+            userID: user.id,
+            recipeID: recipeChoice.id
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.log('ERROR: Could not delete from user data; log:', err));
+
+    fetch('http://localhost:3001/api/v1/users')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.log('ERROR: Could not show the delete from user data; log:', err));
+
+    console.log('it deleted');
+}
 
 
 
@@ -89,5 +117,6 @@ export {
     ingredientList,
     featuredRecipes,
     getUsers,
-    postRecipeToUser // What we changed to save recipes to api users
+    postRecipeToUser, // What we changed to save recipes to api users
+    removeRecipeForUser
 };
