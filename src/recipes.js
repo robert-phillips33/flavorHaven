@@ -47,7 +47,7 @@ export const findRecipePrice = (recipe) => {
   var totalValue = recipe.ingredients.reduce((accumulatorVal, currentIngredient) => {
     var foundIngredient = ingredientsData.find(ingredient => ingredient.id === currentIngredient.id)
     var priceForThisIngredient = foundIngredient.estimatedCostInCents * currentIngredient.quantity.amount
-    console.log(`adding ${(priceForThisIngredient / 100).toFixed(2)} for ${currentIngredient.quantity.amount} ${foundIngredient.name}s`)
+    // console.log(`adding ${(priceForThisIngredient / 100).toFixed(2)} for ${currentIngredient.quantity.amount} ${foundIngredient.name}s`)
     return accumulatorVal + priceForThisIngredient
   }, 0)
   return totalValue
@@ -60,6 +60,14 @@ export const findRecipeInstructions = (recipe, recipeName) => {
     return recipes.name === recipeName;
   })
   return userRecipe.instructions;
+};
+
+export const myUser = (id, name, recipesToCook = []) => {
+  return {
+    id,
+    name,
+    recipesToCook
+  }
 };
 
 
