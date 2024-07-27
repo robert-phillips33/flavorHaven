@@ -62,6 +62,14 @@ export const findRecipeInstructions = (recipe, recipeName) => {
   return userRecipe.instructions;
 };
 
+export const myUser = (id, name, recipesToCook = []) => {
+  return {
+    id,
+    name,
+    recipesToCook
+  }
+};
+
 
 export{
   recipeData,

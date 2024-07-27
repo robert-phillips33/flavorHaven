@@ -1,4 +1,3 @@
-// Your fetch requests will live here!
 let currentUser;
 let recipesChosen = [];
 const userPromise = fetch("http://localhost:3001/api/v1/users").then((response) => response.json());
@@ -8,7 +7,6 @@ const recipesPromise = fetch("http://localhost:3001/api/v1/recipes").then((respo
 let userList;
 let ingredientList;
 let recipeData;
-
 
 const randomUser = (response) => {
     userList = response[0];
