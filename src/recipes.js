@@ -18,7 +18,6 @@ export const findRecipeIngredients = (recipeName) => {
 };
 
 export const findRecipeTag = (recipeList, tag) => {
-
   let recipeTag = recipeList.filter((recipes) => {
     return recipes.tags.includes(tag);
   });
@@ -39,7 +38,7 @@ export const findRecipeName = (recipeList, searchString) => {
 };
 
 export const findRecipePrice = (recipe) => {
-  
+
   var totalValue = recipe.ingredients.reduce((accumulatorVal, currentIngredient) => {
     var foundIngredient = ingredientsData.find(ingredient => ingredient.id === currentIngredient.id)
     var priceForThisIngredient = foundIngredient.estimatedCostInCents * currentIngredient.quantity.amount
@@ -56,7 +55,21 @@ export const findRecipeInstructions = (recipe, recipeName) => {
   return userRecipe.instructions;
 };
 
-export{
+export const myUser = (id, name, recipesToCook = []) => {
+  return {
+    id,
+    name,
+    recipesToCook
+  }
+};
+
+export const removeRecipeForUser = (user, recipe) => {
+  if (user.recipesToCook.includes(recipe.id)) {
+    user.recipesToCook.splice(user.recipesToCook.indexOf(recipe.id), 1)
+  }
+};
+
+export {
   recipeData,
   ingredientList,
 };

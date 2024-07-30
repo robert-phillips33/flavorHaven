@@ -1,16 +1,8 @@
 import { expect } from 'chai';
-// const chai = require('chai');
-// const expect = chai.expect;
-import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, findRecipeInstructions } from '../src/recipes.js';
-
-import { userInput } from './src/domUpdates.js';
-
-// import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes,  recipesPromise } from '../src/apiCalls.js';
-// import recipeData from '../src/data/recipes.js';
+import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, findRecipeInstructions, myUser, removeRecipeForUser } from '../src/recipes.js';
 import ingredientsData from '../src/data/ingredients.js';
 import newRecipeData from '../src/data/recipesSample.js';
 import { recipeData } from '../src/apiCalls.js';
-
 
 describe('findRecipeIngredients', () => {
   it('Should be a function', () => {
@@ -33,16 +25,7 @@ describe('findRecipeIngredients', () => {
       'soy sauce',
       'sriracha sauce'])
   });
-
-
-  it.skip('should return an alert if no recipe exists', () => {
-    const tryToFindARecipe = findRecipeIngredients(newRecipeData[5].name);
-    const noRecipeFound = userInput();
-
-    expect(noRecipeFound).to.equal('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)');
-  });
-
-})
+});
 
 describe('findRecipeTag', () => {
   it('Should be a function', () => {
@@ -78,42 +61,66 @@ describe('findRecipePrice', () => {
   });
 });
 
-describe('findRecipeInstructions', function() {
-  it('should be a function', function() {
+describe('findRecipeInstructions', function () {
+  it('should be a function', function () {
     expect(findRecipeInstructions).to.be.a('function');
   });
 
-  it('should return the instructions for a given recipe', function() {
+  it('should return the instructions for a given recipe', function () {
     const userRecipe = findRecipeInstructions(newRecipeData, 'Elvis Pancakes')
     expect(userRecipe).to.deep.equal([
       {
         "instruction": "Watch how to make this recipe.",
         "number": 1
-    },
-    {
+      },
+      {
         "instruction": "In a large bowl, whisk together buttermilk, eggs, baking powder, sugar, salt and butter.",
         "number": 2
-    },
-    {
+      },
+      {
         "instruction": "In another large bowl mix together all-purpose flour and buckwheat flour.",
         "number": 3
-    },
-    {
+      },
+      {
         "instruction": "Slowly add flour into the wet ingredients mixing with a whisk.",
         "number": 4
-    },
-    {
+      },
+      {
         "instruction": "Mix until there are no lumps and the batter is smooth and velvety.",
         "number": 5
-    },
-    {
+      },
+      {
         "instruction": "In a large cast iron skillet or flat grill pan over medium-high heat, melt a tablespoon of butter. Ladle pancake batter onto skillet to desired size. Using the ladle, form pancake into circular shape. Cook on each side for 2 to 3 minutes or until golden brown. Set pancakes aside and keep warm. Repeat with remaining ingredients.",
         "number": 6
-    },
-    {
+      },
+      {
         "instruction": "Once completed, spread peanut butter on a pancake, layer it with sliced bananas and drizzle it with honey. Top the pancake with another pancake to form a sandwich. Repeat with remaining pancakes and serve with extra honey.",
         "number": 7
-    }
+      }
     ])
+  });
+});
+
+describe('myUser', () => {
+  it('should be a function', function () {
+    expect(myUser).to.be.a('function');
+  });
+
+  it('should be a user', function () {
+    const user = myUser(5, 'Buford DuBuque', [])
+    expect(user).to.deep.equal({ id: 5, name: 'Buford DuBuque', recipesToCook: [] })
+  });
+});
+
+describe('removeRecipeForUser', () => {
+  it('should be a function', function () {
+    expect(removeRecipeForUser).to.be.a('function')
+  });
+
+  it('should remove a selected recipe', function () {
+    const customer = myUser(5, 'Buford Dubuque', [741603, 621213])
+    const deletedReciepe = { id: 741603, name: "Elvis Pancakes" }
+    removeRecipeForUser(customer, deletedReciepe)
+    expect(customer.recipesToCook).to.deep.equal([621213])
   });
 });

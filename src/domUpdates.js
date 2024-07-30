@@ -1,6 +1,5 @@
-
-import { userPromise, currentUser, userList, ingredientList, recipesChosen, removeRecipeForUser, featuredRecipes, randomUser, recipeData, recipesPromise, ingredientsPromise, postTestUser, postRecipeToUser } from './apiCalls.js';
-import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
+import { userPromise, currentUser, userList, ingredientList, recipesChosen, featuredRecipes, randomUser, recipeData, recipesPromise, ingredientsPromise, postTestUser, postRecipeToUser } from './apiCalls.js';
+import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, removeRecipeForUser } from '../src/recipes.js';
 import { result } from 'lodash';
 
 const allRecipesButton = document.querySelector('.allRecipes');
@@ -23,29 +22,26 @@ const bestSelectionNameThree = document.querySelector('.best-select-name-3');
 const bestSelectionNameFour = document.querySelector('.best-select-name-4');
 const aboutUsView = document.querySelector('.about-us');
 const bestSelectionInner = document.querySelector('.best-selection-inner');
+const dropDownContentView = document.querySelector('dropDownBtn');
 var addItemButton = document.querySelector('.aboutUs-btn');
 var addItemButton2 = document.querySelector('.aboutUs-btn2');
-const dropDownContentView = document.querySelector('dropDownBtn');
 let recipesToCook = [];
-
 var currentRecipeSelection = recipeData;
-Promise.all([userPromise]).then((values) => { randomUser(values) }).catch(err => console.log('ERROR: could not get user data. log: ', err));
-;
-Promise.all([recipesPromise]).then((values) => { featuredRecipes(values) }).then((values) => { allBestSelections() }).catch(err => console.log('ERROR: could not get featured recipes. log: ', err));
-;
+Promise.all([userPromise]).then((values) => { randomUser(values) });
+Promise.all([recipesPromise]).then((values) => { featuredRecipes(values) }).then((values) => { allBestSelections() });
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 };
 
-Promise.all([userPromise]).then((values) => { handleData(values) }).catch(err => console.log('ERROR: Could not log in correctly. log: ', err));
+Promise.all([userPromise]).then((values) => { handleData(values) });
 
 const handleData = (response) => {
   logIn.innerHTML = currentUser.name;
 };
 
 const displayRecipes = () => {
-  
+
   savedRecipesView.innerHTML = null;
   recipeDisplaySection.innerHTML = null;
   var detailedRecipeArray = [];
@@ -77,8 +73,10 @@ const displayRecipes = () => {
 };
 
 function showFullRecipe() {
+
   var valForID = this.idVal;
   var toggleTemp = toggleTemp = document.querySelector(`#saveRecipe${valForID}`);
+
   toggleTemp.classList.toggle("hidden");
 
   toggleTemp = document.querySelector(`#foodPrice${valForID}`);
@@ -89,7 +87,6 @@ function showFullRecipe() {
 
   toggleTemp = document.querySelector(`#instructions${valForID}`);
   toggleTemp.classList.toggle("hidden");
-
 };
 
 function saveRecipe() {
@@ -131,47 +128,45 @@ const userInput = () => {
   const input = document.getElementById('searchInput').value;
   currentRecipeSelection = findRecipeName(recipeData, input);
   if (currentRecipeSelection.length === 0) {
-    alert('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)')
-  };                                                          
+    alert('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)');
+  };
 
   displayRecipes();
 };
 
-searchRecipesBtn.addEventListener('click', userInput)
+searchRecipesBtn.addEventListener('click', userInput);
 
-// filtering by tag
 function findByTag(tagInput) {
-  currentRecipeSelection = recipeData.filter(recipe => recipe.tags.includes(tagInput))
+  currentRecipeSelection = recipeData.filter(recipe => recipe.tags.includes(tagInput));
   displayRecipes();
 };
+
 function recipesToCookFindByTag(tagInput) {
-  currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.tags.includes(tagInput)))
+  currentRecipeSelection = recipeData.filter(recipe => (currentUser.recipesToCook.includes(recipe)) && (recipe.tags.includes(tagInput)));
   displayRecipes();
 };
 
 const tagInitialize = () => {
-  // add an event listener to each tag button to search
   document.querySelectorAll(".tag")
     .forEach(element => {
-      element.addEventListener('click', (e) => findByTag(e.target.dataset.tag))
+      element.addEventListener('click', (e) => findByTag(e.target.dataset.tag));
     })
 
-  // add an event listener to each tag button to search
   document.querySelectorAll(".recipe-tag")
     .forEach(element => {
-      element.addEventListener('click', (e) => recipesToCookFindByTag(e.target.dataset.tag))
+      element.addEventListener('click', (e) => recipesToCookFindByTag(e.target.dataset.tag));
     })
 };
 
 tagInitialize();
 
-
-//SAVE RECIPES
 const savedRecipesPage = () => {
+
   currentRecipeSelection = currentUser.recipesToCook;
   savedRecipesView.innerHTML = null;
   recipeDisplaySection.innerHTML = null;
   var detailedRecipeArray = [];
+
   currentRecipeSelection.forEach((idVal) => detailedRecipeArray.push(recipeData.find((recipeVal) => recipeVal.id === idVal)));
   currentRecipeSelection = detailedRecipeArray;
   for (var i = 0; i < currentRecipeSelection.length; i++) {
@@ -207,24 +202,21 @@ const savedRecipesPage = () => {
   allowToggle();
 };
 
-
 const recipesToCookFindByName = () => {
-  const input = document.getElementById('savedRecipeInput').value
-  currentRecipeSelection = findRecipeName(recipeData, input)
+  const input = document.getElementById('savedRecipeInput').value;
+  currentRecipeSelection = findRecipeName(recipeData, input);
   displayRecipes();
 };
 
-savedRecipes.addEventListener('click', savedRecipesPage)
-savedRecipes2.addEventListener('click', savedRecipesPage)
-
-searchUserRecipesBtn.addEventListener('click', recipesToCookFindByName)
+savedRecipes.addEventListener('click', savedRecipesPage);
+savedRecipes2.addEventListener('click', savedRecipesPage);
+searchUserRecipesBtn.addEventListener('click', recipesToCookFindByName);
 
 const addToSavedRecipe = (recipe) => {
   if (!recipesToCook.includes(recipe.id)) {
     recipesToCook.push(recipe.id)
   }
 };
-
 
 const centsToDollarAmount = (cents) => {
   return cents / 100
@@ -238,6 +230,7 @@ const userSignUp = () => {
     alert('Please enter a valid email!')
   }
 };
+
 emailSignUpBtn.addEventListener('click', userSignUp)
 
 const allBestSelections = () => {
