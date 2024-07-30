@@ -1,11 +1,9 @@
-//Here is an example demonstrating logic separated that can be imported into the scripts and test files. Feel free to update this later! 
 import { ingredientsPromise, ingredientList, handleIngredients, handleRecipes, recipesPromise } from './apiCalls.js';
 import ingredientsData from './data/ingredients.js';
 import recipeData from './data/recipes.js';
 Promise.all([ingredientsPromise]).then((values) => { handleIngredients(values) });
 Promise.all([recipesPromise]).then((values) => { handleRecipes(values) });
 let recipe = [];
-
 
 export const findRecipeIngredients = (recipeName) => {
 
@@ -19,9 +17,7 @@ export const findRecipeIngredients = (recipeName) => {
   return listOfFoods;
 };
 
-
 export const findRecipeTag = (recipeList, tag) => {
-
   let recipeTag = recipeList.filter((recipes) => {
     return recipes.tags.includes(tag);
   });
@@ -30,7 +26,6 @@ export const findRecipeTag = (recipeList, tag) => {
   });
   return newRecipeTag;
 };
-
 
 export const findRecipeName = (recipeList, searchString) => {
   let recipes = recipeList.filter((recipe) => {
@@ -41,18 +36,15 @@ export const findRecipeName = (recipeList, searchString) => {
   return recipes;
 };
 
-
 export const findRecipePrice = (recipe) => {
-  console.log('calculating ' + recipe.name)
+
   var totalValue = recipe.ingredients.reduce((accumulatorVal, currentIngredient) => {
     var foundIngredient = ingredientsData.find(ingredient => ingredient.id === currentIngredient.id)
     var priceForThisIngredient = foundIngredient.estimatedCostInCents * currentIngredient.quantity.amount
-    // console.log(`adding ${(priceForThisIngredient / 100).toFixed(2)} for ${currentIngredient.quantity.amount} ${foundIngredient.name}s`)
     return accumulatorVal + priceForThisIngredient
   }, 0)
   return totalValue
 };
-
 
 export const findRecipeInstructions = (recipe, recipeName) => {
 
@@ -70,8 +62,13 @@ export const myUser = (id, name, recipesToCook = []) => {
   }
 };
 
+export const removeRecipeForUser = (user, recipe) => {
+  if (user.recipesToCook.includes(recipe.id)) {
+    user.recipesToCook.splice(user.recipesToCook.indexOf(recipe.id), 1)
+  }
+};
 
-export{
+export {
   recipeData,
   ingredientList,
 };
