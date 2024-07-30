@@ -174,11 +174,6 @@ const newIngredientsData = [
         "name": "seasoned salt",
         "estimatedCostInCents": 334
       },
-    //   {
-    //     "id": 1042047,
-    //     "name": "seasoned salt",
-    //     "estimatedCostInCents": 334
-    //   },
     {
         "id": 20081,
         "name": "wheat flour",
@@ -199,21 +194,11 @@ const newIngredientsData = [
         "name": "buck wheat flour",
         "estimatedCostInCents": 865
       },
-    //   {
-    //     "id": 1001,
-    //     "name": "butter",
-    //     "estimatedCostInCents": 618
-    //   },
     {
         "id": 1230,
         "name": "buttermilk",
         "estimatedCostInCents": 773
       },
-    //   {
-    //     "id": 1123,
-    //     "name": "eggs",
-    //     "estimatedCostInCents": 472
-    //   },
     {
         "id": 19296,
         "name": "runny honey",
@@ -229,21 +214,11 @@ const newIngredientsData = [
         "name": "salt",
         "estimatedCostInCents": 280
       },
-    //   {
-    //     "id": 19335,
-    //     "name": "sucrose",
-    //     "estimatedCostInCents": 902
-    //   },
     {
         "id": 2048,
         "name": "apple cider vinegar",
         "estimatedCostInCents": 532
       },
-    //   {
-    //     "id": 18371,
-    //     "name": "baking powder",
-    //     "estimatedCostInCents": 346
-    //   },
     {
         "id": 20090,
         "name": "brown rice flour",
@@ -254,11 +229,6 @@ const newIngredientsData = [
         "name": "brown rice syrup",
         "estimatedCostInCents": 126
       },
-    //   {
-    //     "id": 4582,
-    //     "name": "oil",
-    //     "estimatedCostInCents": 807
-    //   },
     {
         "id": 1124,
         "name": "egg albumen",
@@ -289,11 +259,6 @@ const newIngredientsData = [
         "name": "Potato Starch Flour",
         "estimatedCostInCents": 895
       },
-    //   {
-    //     "id": 2047,
-    //     "name": "salt",
-    //     "estimatedCostInCents": 280
-    //   },
     {
         "id": 93696,
         "name": "tapioca starch",

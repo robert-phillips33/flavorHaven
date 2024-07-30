@@ -1,5 +1,5 @@
-import { userPromise, currentUser, userList, ingredientList, recipesChosen, removeRecipeForUser, featuredRecipes, randomUser, recipeData, recipesPromise, ingredientsPromise, postTestUser, postRecipeToUser } from './apiCalls.js';
-import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice } from '../src/recipes.js';
+import { userPromise, currentUser, userList, ingredientList, recipesChosen, featuredRecipes, randomUser, recipeData, recipesPromise, ingredientsPromise, postTestUser, postRecipeToUser } from './apiCalls.js';
+import { findRecipeIngredients, findRecipeTag, findRecipeName, findRecipePrice, removeRecipeForUser } from '../src/recipes.js';
 import { result } from 'lodash';
 
 const allRecipesButton = document.querySelector('.allRecipes');
@@ -26,13 +26,9 @@ const dropDownContentView = document.querySelector('dropDownBtn');
 var addItemButton = document.querySelector('.aboutUs-btn');
 var addItemButton2 = document.querySelector('.aboutUs-btn2');
 let recipesToCook = [];
-
 var currentRecipeSelection = recipeData;
-// Promise.all([userPromise]).then((values) => { randomUser(values) });
-// Promise.all([recipesPromise]).then((values) => { featuredRecipes(values) }).then((values) => { allBestSelections() })
-// Promise.all([ingredientsPromise]).then((values) => { handleData(values) })
 Promise.all([userPromise]).then((values) => { randomUser(values) });
-Promise.all([recipesPromise]).then((values) => { featuredRecipes(values) }).then((values)=>{allBestSelections()});
+Promise.all([recipesPromise]).then((values) => { featuredRecipes(values) }).then((values) => { allBestSelections() });
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
@@ -45,7 +41,7 @@ const handleData = (response) => {
 };
 
 const displayRecipes = () => {
-  
+
   savedRecipesView.innerHTML = null;
   recipeDisplaySection.innerHTML = null;
   var detailedRecipeArray = [];
@@ -77,10 +73,10 @@ const displayRecipes = () => {
 };
 
 function showFullRecipe() {
-  
+
   var valForID = this.idVal;
   var toggleTemp = toggleTemp = document.querySelector(`#saveRecipe${valForID}`);
-  
+
   toggleTemp.classList.toggle("hidden");
 
   toggleTemp = document.querySelector(`#foodPrice${valForID}`);
@@ -133,8 +129,8 @@ const userInput = () => {
   currentRecipeSelection = findRecipeName(recipeData, input);
   if (currentRecipeSelection.length === 0) {
     alert('(⊙︿⊙) None of our recipes match your input (⊙︿⊙)');
-  };                                                          
-  
+  };
+
   displayRecipes();
 };
 
@@ -165,12 +161,12 @@ const tagInitialize = () => {
 tagInitialize();
 
 const savedRecipesPage = () => {
-  
+
   currentRecipeSelection = currentUser.recipesToCook;
   savedRecipesView.innerHTML = null;
   recipeDisplaySection.innerHTML = null;
   var detailedRecipeArray = [];
-  
+
   currentRecipeSelection.forEach((idVal) => detailedRecipeArray.push(recipeData.find((recipeVal) => recipeVal.id === idVal)));
   currentRecipeSelection = detailedRecipeArray;
   for (var i = 0; i < currentRecipeSelection.length; i++) {
@@ -265,7 +261,7 @@ const allBestSelections = () => {
   const bestSelectionThreeBtn = document.querySelector('.best-select-actual-img-3');
   const bestSelectionFourBtn = document.querySelector('.best-select-actual-img-4');
   const bestSelectionSaveOne = document.querySelector(`#saveRecipe${recipesChosen[0].id}`);
-  
+
   bestSelectionSaveOne.idVal = JSON.parse(JSON.stringify(recipesChosen[0].id));
   const bestSelectionSaveTwo = document.querySelector(`#saveRecipe${recipesChosen[1].id}`);
   bestSelectionSaveTwo.idVal = JSON.parse(JSON.stringify(recipesChosen[1].id));
@@ -273,7 +269,7 @@ const allBestSelections = () => {
   bestSelectionSaveThree.idVal = JSON.parse(JSON.stringify(recipesChosen[2].id));
   const bestSelectionSaveFour = document.querySelector(`#saveRecipe${recipesChosen[3].id}`);
   bestSelectionSaveFour.idVal = JSON.parse(JSON.stringify(recipesChosen[3].id));
-  
+
   bestSelectionSaveOne.addEventListener('click', saveRecipe);
   bestSelectionSaveTwo.addEventListener('click', saveRecipe);
   bestSelectionSaveThree.addEventListener('click', saveRecipe);

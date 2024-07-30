@@ -37,7 +37,6 @@ const handleRecipes = (response) => {
 };
 
 function getUsers() {
-    // var responseClone;
     fetch('http://localhost:3001/api/v1/recipes')
         .then(response => response.json())
         .then(data => console.log(data))
@@ -46,9 +45,7 @@ function getUsers() {
 
 }
 
-
-
-function postRecipeToUser(user, recipeChoice) { // renamed from Z's test stuff.
+function postRecipeToUser(user, recipeChoice) {
 
     fetch('http://localhost:3001/api/v1/usersRecipes', {
         method: 'POST',
